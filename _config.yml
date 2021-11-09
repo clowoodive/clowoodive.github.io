@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Dive into the Cloud"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "클라우다이브"
+name                     : "by Clowoodive"
 description              : "돌아 돌아 클라우드에 정착하려는 개발자."
 url                      : "https://clowoodive.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -102,11 +102,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Ado Han"
+  name             : "Clowoodive"
   avatar           : "/assets/images/dog.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  bio              : "백엔드로 전향한 개발자"
   location         : "South Korea"
-  email            : eeemmm
+  email            : clowoodive@gmail.com
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
