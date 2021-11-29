@@ -20,11 +20,13 @@ MySQL DOCUMENTATION에 잘 나와있고 기본적인 내용이지만
 > 인덱스가 multi_index(col1, col2, col3)이라면,  
 > (col1), (col1, col2), (col1, col2, col3) 각각의 인덱스가 사용 가능.
 
-### 2. 조인 대상 컬럼의 DataType과 Size가 같으면 인덱스가 사용될 수 있다.
->> 예외적으로 VARCHAR(10)와 CHAR(10)은 적용 되지만, VARCHAR(10) and CHAR(15)은 안됨.
->> 문자열 컬럼의 경우 Char Set도 같아야 함.
-
-```
+### 2. JOIN 대상 컬럼의 DataType과 Size가 같으면 인덱스가 사용될 수 있다.
+> 예외적으로 VARCHAR(10)와 CHAR(10)은 적용 되지만, VARCHAR(10) and CHAR(15)은 안됨.
+> 문자열 컬럼의 경우 Char Set도 같아야 함.
+<!--
+    코드블록 위아래에는 빈줄이 있어야 함!!
+-->
+``` sql
 SELECT MIN(key_part2),MAX(key_part2)
 FROM tbl_name WHERE key_part1=10;
 ```
