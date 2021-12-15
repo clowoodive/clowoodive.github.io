@@ -3,8 +3,10 @@ title:  "MySQL 쿼리 최적화 - Index 종류"
 excerpt: "다양한 Index 적용 방식을 알아보자"
 
 categories:
-  - Blog, Database, MySQL
+  - Database
+  - MySQL
 tags:
+  - Database
   - MySQL
 last_modified_at: 2021-11-29T15:06:00-05:00
 ---
