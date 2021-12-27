@@ -1,9 +1,9 @@
 ---
-title:  "MySQL 쿼리 최적화 - Index 종류"
+title:  "Java"
 excerpt: "다양한 Index 적용 방식을 알아보자"
 
 categories:
-  - MySQL
+  - Java
 tags:
   - Database
   - MySQL
