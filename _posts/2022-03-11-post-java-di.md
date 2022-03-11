@@ -8,7 +8,7 @@ categories:
 tags:
   - Java
   - Spring
-last_modified_at: 2022-03-11T15:06:00-05:00
+last_modified_at: 2022-03-10T00:00:00
 ---
 
 진행 중이던 프로젝트를 이어 받으면서 Spring Framework를 접하게 되었는데
