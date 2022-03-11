@@ -1,5 +1,5 @@
 ---
-title:  "의존성 주입(DI)dddd"
+title:  "의존성 주입(DI)"
 excerpt: "Dependency Injection의 장점과 방법"
 
 categories:
