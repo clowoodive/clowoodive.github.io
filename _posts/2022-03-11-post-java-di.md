@@ -1,5 +1,5 @@
 ---
-title:  "의존성 주입(DI)"
+title:  "의존성 주입(Dependency Injection)"
 excerpt: "Dependency Injection의 장점과 방법"
 
 categories:
@@ -39,7 +39,7 @@ last_modified_at: 2022-03-10T00:00:00
 
 <br>
 
----
+
 
 ## 주입 방법1 - 필드 주입(Field Injection)
 
@@ -55,7 +55,7 @@ public class AdminController {
 
   <br>
 
----
+
 
 ## 주입 방법2 - 수정자 주입(Setter Injection)
 
@@ -75,7 +75,7 @@ public class AdminController {
 
 <br>
 
----
+
 
 ## 주입 방법3 - 생성자 주입(Constructor Injection)
 
@@ -95,7 +95,7 @@ public class AdminController {
 
 <br>
 
----
+
 
 ## 왜 생성자 주입이 좋을까?
 
