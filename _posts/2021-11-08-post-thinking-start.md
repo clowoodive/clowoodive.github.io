@@ -1,5 +1,5 @@
 ---
-title:  "GitHub 블로그를 시작하면서"
+title:  "[Thinking] GitHub 블로그를 시작하면서"
 excerpt: "GitHub Blog 서비스인 github.io 블로그 시작하기로 했다."
 
 categories:

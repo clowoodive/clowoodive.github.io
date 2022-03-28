@@ -1,5 +1,5 @@
 ---
-title:  "존경스러운 블로거들"
+title:  "[Retrospection] 존경스러운 블로거들"
 excerpt: "엄청난 시간이 필요한 블로그를 작성하시는 대단한 분들.."
 
 categories:

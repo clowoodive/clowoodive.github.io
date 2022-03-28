@@ -1,5 +1,5 @@
 ---
-title: "GCP에서 글로벌 서비스를 위한 리전 선택"
+title: "[GCP] GCP에서 글로벌 서비스를 위한 리전 선택"
 excerpt: "빠른 글로벌 서비스를 위한 Region 선택"
 
 categories:
