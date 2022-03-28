@@ -3,10 +3,8 @@ title:  "의존성 주입(Dependency Injection)"
 excerpt: "Dependency Injection의 장점과 방법"
 
 categories:
-  - Java
   - Spring
 tags:
-  - Java
   - Spring
 last_modified_at: 2022-03-10T00:00:00
 ---

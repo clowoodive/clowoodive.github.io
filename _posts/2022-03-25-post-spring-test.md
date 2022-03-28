@@ -4,10 +4,8 @@ excerpt: "단위 테스트를 적용하면서 종합한 내용을 간략히 정�
 
 categories:
   - Spring
-  - Java
 tags:
   - Spring
-  - Java
 last_modified_at: 2022-03-25T00:00:00
 ---
 

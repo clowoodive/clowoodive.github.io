@@ -9,14 +9,7 @@
           🌟 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
       </li>
       <li>
-        <span class="nav__sub-title">Java</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "JavaEtc" %}
-                        <li><a href="/categories/javaetc" class=""> 📂 Java ETC ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+        <span class="nav__sub-title">Java&Spring</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Java" %}
@@ -28,6 +21,20 @@
                 {% for category in site.categories %}
                     {% if category[0] == "Spring" %}
                         <li><a href="/categories/spring" class=""> 📂 Spring ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Spring Boot" %}
+                        <li><a href="/categories/javaetc" class=""> 📂 Spring Boot ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "JavaEtc" %}
+                        <li><a href="/categories/javaetc" class=""> 📂 Java ETC ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
