@@ -20,21 +20,21 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Spring" %}
-                        <li><a href="/categories/spring" class=""> 📂 Spring ({{category[1].size}})</a></li>
+                        <li><a href="/categories/spring" class="" style="padding-left: 20px;"> 📂 Spring ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Spring Boot" %}
-                        <li><a href="/categories/spring-boot" class=""> 📂 Spring Boot ({{category[1].size}})</a></li>
+                        <li><a href="/categories/spring-boot" class="" style="padding-left: 20px;"> 📂 Spring Boot ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "JavaEtc" %}
-                        <li><a href="/categories/javaetc" class=""> 📂 Java ETC ({{category[1].size}})</a></li>
+                        <li><a href="/categories/javaetc" class="" style="padding-left: 20px;"> 📂 Java ETC ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -42,14 +42,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "MySQL" %}
-                        <li><a href="/categories/mysql" class=""> 📂 MySQL ({{category[1].size}})</a></li>
+                        <li><a href="/categories/mysql" class="" style="padding-left: 20px;"> 📂 MySQL ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "MySQLTuning" %}
-                        <li><a href="/categories/mysqltuning" class=""> 📂 MySQL Tuning ({{category[1].size}})</a></li>
+                        <li><a href="/categories/mysqltuning" class="" style="padding-left: 20px;"> 📂 MySQL Tuning ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -57,7 +57,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Thinking" %}
-                        <li><a href="/categories/thinking" class=""> 📂 Thinking & Retrospection ({{category[1].size}})</a></li>
+                        <li><a href="/categories/thinking" class="" style="padding-left: 20px;"> 📂 Thinking & Retrospection ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -65,7 +65,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "GCP" %}
-                        <li><a href="/categories/gcp" class=""> 📂 GCP ({{category[1].size}})</a></li>
+                        <li><a href="/categories/gcp" class="" style="padding-left: 20px;"> 📂 GCP ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -73,14 +73,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Algorithm" %}
-                        <li><a href="/categories/algorithm" class=""> 📂 알고리즘 구현 (with C++) ({{category[1].size}})</a></li>
+                        <li><a href="/categories/algorithm" class="" style="padding-left: 20px;"> 📂 알고리즘 구현 (with C++) ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class="" > 📂 프로그래머스 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/programmers" class=""  style="padding-left: 20px;"> 📂 프로그래머스 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
