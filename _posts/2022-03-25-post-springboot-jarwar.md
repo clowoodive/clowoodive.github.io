@@ -1,10 +1,12 @@
 ---
-title:  "[Java] Jar & War"
-excerpt: ""
+title:  "[Spring Boot/Java] Jar & War"
+excerpt: "내장 tomcat을 사용해서 서비스 한다면 Jar파일로 패키징 하더라도 실행 가능하다"
 
 categories:
+  - Spring Boot
   - Java
 tags:
+  - Spring Boot
   - Java
 last_modified_at: 2022-03-29T00:00:00
 ---
@@ -55,7 +57,7 @@ Jar 파일이 라이브러리, 어플리케이션 용도의 패키징이라면 W
 
 ## 참고
 
-만약 내장 tomcat을 사용해서 서비스 한다면(외장 서블릿 컨테이너를 사용하거나 JSP를 사용하는것이 아니라면)  Jar파일로 패키징 하더라도 실행 가능하다. 
+만약 내장 tomcat을 사용해서 서비스 한다면(외장 서블릿 컨테이너를 사용하거나 JSP를 사용하는것이 아니라면) Jar파일로 패키징 하더라도 실행 가능하다. 
 
 <!--
 
