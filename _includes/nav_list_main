@@ -13,7 +13,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Java" %}
-                        <li><a href="/categories/java" class="">   📂 Java ({{category[1].size}})</a></li>
+                        <li><a href="/categories/java" class="" style="padding-left: 20px;">   📂 Java ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -80,7 +80,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class=""> 📂 프로그래머스 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/programmers" class="" > 📂 프로그래머스 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
