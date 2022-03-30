@@ -19,16 +19,13 @@ last_modified_at: 2022-03-29T00:00:00
 - plain jar, standard jar, thin jar 라고 불림.
 - java -jar 명령어로 실행 불가능.
 
-<br>
-
 ## Executable Jar
 
 의존성을 포함한 어플리케이션 실행에 필요한 모든 파일을 포함해서 빌드한다.
 
 - uber jar라고 불림.
 - java -jar 명령어로 실행 가능.
-
-<br>
+- Spring Boot로 패키징 시 내장 tomcat을 포함한다.
 
 ## Spring Boot의 Executable Jar
 
@@ -49,15 +46,16 @@ myapp.jar
 - 사용되는 핵심 클래스는 org.springframework.boot.loader.jar.JarFile.
 - 최초 로드 시 각각의 JarEntry위치는 위와 같이 가장 바깥의 물리적 파일 오프셋에 매핑됨.
 
-<br>
-
 ## War
 
-Jar 파일이 라이브러리, 어플리케이션 용도의 패키징이라면 War파일은 Servlet/JSP 컨테이너에 배포 가능한 웹 어플리케이션 패키징이다. 따라서 War 패키징은 WEB-INF/META-INF와 같이 사전 정의된 구조가 요구된다.
+Jar 파일이 라이브러리, 어플리케이션 용도의 패키징이라면 War파일은 Servlet/JSP 컨테이너에 배포 가능한 웹 어플리케이션 패키징이다. 따라서 WEB-INF/META-INF와 같이 사전 정의된 구조로 패키징 된다.
+
+> Servlet 컨테이너(ex 외장 tomcat)에 구동시키기 위해서 main이 있는 클래스가 SpringBootServletInitializer를 상속받아야 한다.
+> 
 
 ## 참고
 
-만약 내장 tomcat을 사용해서 서비스 한다면(외장 서블릿 컨테이너를 사용하거나 JSP를 사용하는것이 아니라면) Jar파일로 패키징 하더라도 실행 가능하다. 
+만약 내장 tomcat을 사용해서 서비스 한다면(외장 서블릿 컨테이너 또는 JSP를 사용하는것이 아니라면)  Jar파일로 패키징 하더라도 실행 가능하다. 
 
 <!--
 
