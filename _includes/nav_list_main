@@ -74,7 +74,7 @@
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Thinking" %}
-                <li><a href="/categories/thinking" class="" style="padding-left: 20px;"> 📂 Thinking & Retrospection
+                <li><a href="/categories/thinking" class="" style="padding-left: 20px;"> 📂 Thinking
                         ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
