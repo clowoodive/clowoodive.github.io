@@ -1,18 +1,18 @@
 ---
-title:  "[Design Pattern] OOP SOLID - 단일 책임 원칙(Single Responsibility Principle)"
+title:  "[디자인 패턴] SOLID - 단일 책임 원칙(Single Responsibility Principle)"
 excerpt: "응집도가 높고 결합도가 낮은 클래스"
 
 categories:
-  - Design Pattern
+  - 디자인 패턴
   - OOP
 tags:
-  - Design Pattern
+  - 디자인 패턴
   - OOP
 last_modified_at: 2022-04-11T00:00:00
 ---
 
 
-단일 책임 원칙이 첫번째 S에 해당하는 내용이어서 먼저 알아봤으나, 찾아본 글들 마다 “단일 책임” 에 해당하는 것의 스코프가 조금씩 다르고 설명도 제각각이었다. 그래서 알아본 내용들을 바탕으로 이해한 뷰로 정리 해본다.
+OOP 설계 원칙인 SOLID에서 단일 책임 원칙이 첫번째 S에 해당하는 내용이어서 먼저 알아봤으나, 찾아본 글들 마다 “단일 책임” 에 해당하는 것의 스코프가 조금씩 다르고 설명도 제각각이었다. 그래서 알아본 내용들을 바탕으로 이해한 뷰로 정리 해본다.
 
 - SRP 정의
     

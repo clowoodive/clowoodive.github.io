@@ -11,11 +11,11 @@
                         style="font-family:'Cafe24Oneprettynight';">개</style>
         </li>
         <li>
-            <!-- <span class="nav__sub-title">Design Pattern</span> -->
+            <!-- <span class="nav__sub-title">디자인 패턴</span> -->
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Design Pattern" %}
-                <li><a href="/categories/design-pattern" class="" style="padding-left: 20px;"> 📂 Design Pattern ({{category[1].size}})</a>
+                {% if category[0] == "디자인 패턴" %}
+                <li><a href="/categories/design-pattern" class="" style="padding-left: 20px;"> 📂 디자인 패턴 ({{category[1].size}})</a>
                 </li>
                 {% endif %}
                 {% endfor %}
