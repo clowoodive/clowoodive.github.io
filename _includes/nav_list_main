@@ -11,16 +11,16 @@
                         style="font-family:'Cafe24Oneprettynight';">개</style>
         </li>
         <li>
-            <span class="nav__sub-title">Design Pattern</span>
+            <!-- <span class="nav__sub-title">Design Pattern</span> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Design Pattern" %}
-                <li><a href="/categories/desing-pattern" class="" style="padding-left: 20px;"> 📂 Design Pattern ({{category[1].size}})</a>
+                <li><a href="/categories/design-pattern" class="" style="padding-left: 20px;"> 📂 Design Pattern ({{category[1].size}})</a>
                 </li>
                 {% endif %}
                 {% endfor %}
             </ul>
-            <span class="nav__sub-title">Java & Spring</span>
+            <!-- <span class="nav__sub-title">Java & Spring</span> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Java" %}
@@ -53,7 +53,7 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <span class="nav__sub-title">DB</span>
+            <!-- <span class="nav__sub-title">DB</span> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "MySQL" %}
@@ -70,7 +70,7 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <span class="nav__sub-title">생각 & 회고</span>
+            <!-- <span class="nav__sub-title">생각 & 회고</span> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Thinking" %}
@@ -79,7 +79,7 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <span class="nav__sub-title">Cloud</span>
+            <!-- <span class="nav__sub-title">Cloud</span> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "GCP" %}
@@ -88,7 +88,7 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <span class="nav__sub-title">Coding Test</span>
+            <!-- <span class="nav__sub-title">Coding Test</span> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Algorithm" %}
