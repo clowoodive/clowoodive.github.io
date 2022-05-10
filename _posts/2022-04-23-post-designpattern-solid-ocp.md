@@ -104,7 +104,7 @@ public class InvestingController {
 
 만약 이 상태에서 다른 투자상품을 추가 하려면 `InvestingService` 인터페이스를 구현하는 service를 구현하고  `InvestingServiceFactory` 내부만 조금 수정 해 주면 된다. 이렇게 하면 호출부(컨트롤러)의 수정이 없어도 되므로 변경에 닫혀 있다고 볼 수 있다. 
 
-<--
+<!--
 
 [https://github.com/cheese10yun/spring-SOLID/blob/master/docs/OCP.md](https://github.com/cheese10yun/spring-SOLID/blob/master/docs/OCP.md)
 
