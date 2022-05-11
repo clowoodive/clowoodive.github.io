@@ -19,11 +19,11 @@ last_modified_at: 2022-05-05T00:00:00
 
 부모 클래스로 주고받는 코드에서 부모 클래스 대신 자식 클래스로 교체하더라도 논리적으로 문제 없이 동작할수 있게 설계하란 뜻이다.
 
-<center>![solid_lsp1]({{ '/assets/images/solid_lsp1.png' | relative_url }})</center>
+![solid_lsp1]({{ '/assets/images/solid_lsp1.png' | relative_url }}){: .align-center}
 
 위 다이어그램을 보면 부모 클래스인 자동차를 상속받은 가솔린차, 경유차는 부모 클래스의 속성이나 동작들을 그대로 상속받아도 문제가 없기에 괜찮지만,  만약 “전기차”라는 클래스를 새로 추가하고 자동차를 상속 받는다면 어떻게 될까?
 
-<center>![solid_lsp2]({{ '/assets/images/solid_lsp2.png' | relative_url }})</center>
+![solid_lsp2]({{ '/assets/images/solid_lsp2.png' | relative_url }}){: .align-center}
 
 전기차는 배터리로 구동되기에 배터리 속성은 추가하면 되지만, “기름을 넣는다”는 동작은 수행 할수 없기에 상속받을 수가 없다. 따라서 부모 클래스인 `자동차`를 `전기차`로는 교체 할수 없는 설계인 것이다.
 
