@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Dive into the Cloud"
 title_separator          : "-"
 subtitle                 : "first, Become a back-end developer" # site tagline that appears below site title in masthead
-name                     : "by Clowoodive1"
+name                     : "by Clowoodive"
 description              : "돌아 돌아 백엔드에 정착하려는 개발자."
 url                      : "https://clowoodive.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
