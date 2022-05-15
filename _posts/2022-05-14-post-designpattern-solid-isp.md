@@ -8,7 +8,7 @@ categories:
 tags:
   - 디자인 패턴
   - OOP
-last_modified_at: 2022-05-15T00:00:00
+last_modified_at: 2022-05-14T00:00:00
 ---
 
 
