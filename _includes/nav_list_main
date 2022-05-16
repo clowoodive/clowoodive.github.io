@@ -79,6 +79,14 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "삽질" %}
+                <li><a href="/categories/삽질" class="" style="padding-left: 20px;"> 📂 삽질
+                        ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
             <!-- <span class="nav__sub-title">Cloud</span> -->
             <ul>
                 {% for category in site.categories %}
