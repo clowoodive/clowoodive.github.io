@@ -12,22 +12,24 @@ last_modified_at: 2022-05-17T00:00:00
 ---
 
 
-# [Spring] @Async와 ThreadPoolTaskExecutor
-
-Spring에는 비동기 처리를 위한 클래스들을 제공하고 있는데 @Async, @EnableAsync 애너테이션을 이용한 구현에 대해 간단히 알아보고 ThreadPoolTaskExecutor의 값들로 확인한 것을 정리한다.
+Spring에는 비동기 처리를 위한 클래스들을 제공하고 있는데 @Async, @EnableAsync 애너테이션을 이용한 구현에 대해 간단히 알아보고 ThreadPoolTaskExecutor의 pool, queue가 어떻게 동작하는지 확인한 것을 정리한다.
 
 - @Async
-    - 클래스에 선언하면 클래스 내의 모든 메소드가 지정된 executor를 사용
-    - 메소드에 선언하면 해당 메소드만 비동기 처리, 클래스에서 지정한 excecutor를 재정의 가능
-    - 같은 클래스 내의 메소드에 @Async를 선언하고 호출하면 안됨
-    - 비동기 메소드의 리턴타입이 없다면 void, 있다면 Future<V> 인터페이스를 통해 반환
-    
+    - 클래스에 선언하면 클래스 내의 모든 메소드가 지정된 executor를 사용.
+    - 메소드에 선언하면 해당 메소드만 비동기 처리, 클래스에서 지정한 excecutor를 재정의 가능.
+    - 같은 클래스 내의 메소드에 @Async를 선언하고 호출하면 안됨.
+    - private 메소드에는 사용 불가.
+    - 비동기 메소드의 리턴타입이 없다면 void, 있다면 Future\<V> 인터페이스를 통해 반환.
+
+
 - @EnableAsync
-    - @Configuration가 선언된 executor 설정 클래스 위에 선언
-    
+    - @Configuration가 선언된 executor 설정 클래스 위에 선언.
+
+
 - ThreadPoolTaskExecutor
-    - poolSize, queueSize, activeCount등을 확인하기 위해 생성자 주입으로 얻어옴
-    - @Async를 사용하면 기본적으로 SimpleAsyncTaskExecutor를 사용한다고 나와 있으나 주입을 통해  default 상태의 ThreadPoolTaskExecutor를 생성한 것으로 추정
+    - Java의 ThreadPoolExecutor를 bean 스타일로 세팅하고 감싸서 Spring에서 TaskExecutor로 노출 시켜주는 클래스.
+    - poolSize, queueSize, activeCount등을 확인하기 위해 생성자 주입으로 얻어옴.
+    - @Async를 사용하면 기본적으로 SimpleAsyncTaskExecutor를 사용한다고 나와 있으나 주입을 통해  default 상태의 ThreadPoolTaskExecutor를 생성한 것으로 추정.
 
 설정을 통해 Executor bean을 등록하는 방법을 다룬 글들은 흔하게 찾아 볼 수 있으니, 이 글에서는 따로 executor를 설정하는 코드 없이  생성자 주입을 통해 ThreadPoolTaskExecutor를 가져오는 방식으로 한다. 따라서 설정 클래스가 없기에 service에 @EnableAsync를 붙여주었고 pool 관련 속성들은 application.properties 파일에 정의했다.
 
@@ -155,7 +157,7 @@ corePoolSize: 4, maxPoolSize: 19, poolSize: 19, queueSize: 7, activeCount: 19
 ```
 
 하단은 비동기 메소드 내의 로그인데 count값이 뒤죽박죽이고 thread가 1개가 아닌 것으로 보아 잘 동작하고 있다.
-중요한 것은 상단 로그인데, 최초 값들의 상태는 application.properties에 정의한 것과 같다. ”increase poolSize” 부터는 task가 thread pool에 하나씩 할당되면서 poolSize가 corePoolSize 에 도달 할 때 까지 poolSize와 active개수가 늘어난다. 그리고 corePoolSize에 도달하고나면 queue에 적재하면서 queueSize가 늘어나는것을 “using queue” 에서 알수 있다. queue도 최대 용량까지 다 사용하고 나면 그때서야 maxPoolSize만큼까지 poolSize를 늘려가며 task를 할당하게 된다. 
+중요한 것은 상단 로그인데, 최초 값들의 상태는 application.properties에 정의한 것과 같다. “increase poolSize” 부터는 task가 thread pool에 하나씩 할당되면서 poolSize가 corePoolSize 에 도달 할 때 까지 poolSize와 active개수가 늘어난다. 그리고 corePoolSize에 도달하고나면 queue에 적재하면서 queueSize가 늘어나는 것을 “using queue” 에서 알수 있다. queue도 최대 용량까지 다 사용하고 나면 그때서야 maxPoolSize만큼까지 poolSize를 늘려가며 task를 할당하게 된다. 
 
 예제에서는 26개의 메소드를 호출했고 poolSize가 maxPoolSize에 딱맞게 도달할 만큼 사용했는데 여기서 27개의 메소드를 호출하면 어떻게 될까?
 
@@ -170,4 +172,4 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Futur
 
 그리고 메소드에서 남긴 로그 중 상단 19개와 하단 7개의 시간차가 있는것으로 보아 pool에 적재된 19개를 먼저 처리하고, 비교적 빨리 호출되었지만 queue에 적재된 7개는 나중 처리되었음을 알 수 있다.
 
-확인 하면서 구멍이 있었을 수도 있으니 실 서비스에는 꼼꼼하게 더 알아보고 예측을 잘해서 속성값을 세팅해야 겠다.
+확인 하면서 놓친것이 있을 수도 있으니 실 서비스에는 꼼꼼하게 더 알아보고 예측을 잘해서 속성값을 세팅해야 겠다.
