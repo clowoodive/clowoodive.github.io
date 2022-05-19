@@ -26,7 +26,8 @@ Spring 3에서 도입된 클라이언트측 HTTP 엑세스를 위한 클래스�
 | HEAD | headForHeaders(String, String...) |
 | OPTIONS | optionsForAllow(String, String...) |
 | POST | postForLocation(String, Object, String...) |
-| PUT | put(String, Object, String...) |{: .align-center}
+| PUT | put(String, Object, String...) |
+{: .align-center}
 
 ## 내부 동작 원리
 
@@ -40,7 +41,7 @@ Spring 3에서 도입된 클라이언트측 HTTP 엑세스를 위한 클래스�
 
 RestTemplete는 디폴트 생성자를 사용하거나 `ClientHttpRequestFactory` 를 매개변수로 받는 경우 등 여러가지가 있지만 여기서는 `RestTemplateBuilder` 를 통한 방법으로 한다.
 
-RestTemplate 생성 방식에 따라 connection pooling이 달라지니 실서비스 적용 시 주의깊게 살펴야 한다.{: .notice--primary}
+RestTemplate 생성 방식에 따라 connection pooling이 달라지니 실서비스 적용 시 주의깊게 살펴야 한다. {: .notice--primary}
 
 ```groovy
 dependencies {
