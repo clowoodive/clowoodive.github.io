@@ -17,7 +17,7 @@ last_modified_at: 2022-05-18T00:00:00
 Spring 3에서 도입된 클라이언트측 HTTP 엑세스를 위한 클래스이다. Blocking I/O 기반의 동기식으로 처리되며 thread-safe하고 callback을 사용 할수 있다. 
 아래와 같은 주요 HTTP 메소드 호출을 위한 [메소드를 제공](https://spring.io/blog/2009/03/27/rest-in-spring-3-resttemplate)하며, Spring 5대에 와서는 동기식/비동기식을 모두 지원하는 새로운 HTTP client로 WebClient를 권장하고 있고 RestTemplate는 maintenance/deprecated 로 가닥이 잡히고 있다.
 
-![spring_resttemplate1]({{ '/assets/images/spring_resttemplate1.png' | relative_url }}){: .align-center}
+<!-- ![spring_resttemplate1]({{ '/assets/images/spring_resttemplate1.png' | relative_url }}){: .align-center} -->
 
 | HTTP | RestTemplate |
 | --- | --- |
@@ -41,7 +41,7 @@ Spring 3에서 도입된 클라이언트측 HTTP 엑세스를 위한 클래스�
 RestTemplete는 디폴트 생성자를 사용하거나 `ClientHttpRequestFactory` 를 매개변수로 받는 경우 등 여러가지가 있지만 여기서는 `RestTemplateBuilder` 를 통한 방법으로 한다.
 
 RestTemplate 생성 방식에 따라 connection pooling이 달라지니 실서비스 적용 시 주의깊게 살펴야 한다.
-{: .notice--primary}
+{: .notice--warning}
 
 ```groovy
 dependencies {
