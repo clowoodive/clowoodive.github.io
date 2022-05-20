@@ -103,7 +103,7 @@ analytics:
 # Site Author
 author:
   name             : "Clowoodive"
-  avatar           : "/assets/images/dog.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "for walk on the cloud.."
   location         : "South Korea"
   email            : clowoodive@gmail.com
