@@ -29,7 +29,7 @@ Disqus의 경우 광고가 너무 많이 달린다는 것을 알고 있었기에
 
 ![github_blog_utterances1]({{ '/assets/images/github_blog_utterances1.png' | relative_url }}){: .align-center}
 
-Install을 클릭 아래 설치 설정 페이지가 나온다. 모든 repository에 적용할 필요는 없어서 블로그 repository만 지정했다.
+Install을 클릭하면 아래 설치 설정 페이지가 나온다. 모든 repository에 적용할 필요는 없어서 블로그 repository만 지정했다.
 
 ![github_blog_utterances2]({{ '/assets/images/github_blog_utterances2.png' | relative_url }}){: .align-center}
 
