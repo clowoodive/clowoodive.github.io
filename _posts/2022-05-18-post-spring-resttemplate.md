@@ -15,7 +15,7 @@ Environment
 - Spring Boot 2.5.13
 - Spring 5.3.19
 - Java 11
-- {: .notice--primary}
+{: .notice--primary}
 
 ## RestTemplete?
 
