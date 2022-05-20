@@ -53,8 +53,7 @@ post와 issue가 매핑되는 방식은 잘 읽어보고 적절히 결정하고,
 
 ```html
 ... 생략
-		</div>
-  {% endif %}
+    </div>
 </div>
 
 <div>
