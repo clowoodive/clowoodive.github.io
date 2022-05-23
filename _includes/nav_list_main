@@ -14,6 +14,14 @@
             <!-- <span class="nav__sub-title">디자인 패턴</span> -->
             <ul>
                 {% for category in site.categories %}
+                {% if category[0] == "Algorithm" %}
+                <li><a href="/categories/algorithm" class="" style="padding-left: 20px;"> 📂 알고리즘
+                        ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                 {% if category[0] == "디자인 패턴" %}
                 <li><a href="/categories/design-pattern" class="" style="padding-left: 20px;"> 📂 디자인 패턴 ({{category[1].size}})</a>
                 </li>
@@ -105,14 +113,6 @@
                 {% endfor %}
             </ul>
             <!-- <span class="nav__sub-title">Coding Test</span> -->
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "Algorithm" %}
-                <li><a href="/categories/algorithm" class="" style="padding-left: 20px;"> 📂 알고리즘 구현 (with C++)
-                        ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Programmers" %}
