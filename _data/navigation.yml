@@ -1,5 +1,9 @@
 # main links
 main:
+  - title: "Recent Posts"
+    url: https://clowoodive.github.io/
+  - title: "Posts by Tags"
+    url: https://clowoodive.github.io/tags/
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   # - title: "navi test"
