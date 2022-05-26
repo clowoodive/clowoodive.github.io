@@ -12,7 +12,6 @@ last_modified_at: 2022-05-19T00:00:00
 
 {% capture notice-env %}
 #### Environment
-
 - minimal-mistakes-jekyll 4.24.0
 {% endcapture %}
 

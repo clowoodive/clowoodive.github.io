@@ -11,7 +11,6 @@ last_modified_at: 2022-05-26T00:00:00
 
 {% capture notice-env %}
 #### Environment
-
 - Spring Boot 2.5.13
 - Spring 5.3.19
 - Java 11
