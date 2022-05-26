@@ -10,6 +10,13 @@ tags:
 last_modified_at: 2022-05-19T00:00:00
 ---
 
+{% capture notice-env %}
+#### Environment
+
+- minimal-mistakes-jekyll 4.24.0
+{% endcapture %}
+
+<div class="notice--primary">{{ notice-env | markdownify }}</div>
 
 Disqus의 경우 광고가 너무 많이 달린다는 것을 알고 있었기에 댓글 기능 추가를 미루고 있었는데 Utterances가 적용된 블로그를 보니 깔끔하고 광고도 없다고 해서 도입 결정!
 
