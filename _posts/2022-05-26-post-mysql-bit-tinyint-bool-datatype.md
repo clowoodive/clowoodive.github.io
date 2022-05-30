@@ -19,17 +19,17 @@ last_modified_at: 2022-05-26T00:00:00
 
 MySQL에서 BOOL 값을 저장하기 위해 지금 까지 TINYINT(1)을 써왔다. BIT(1)도 1byte 공간을 차지한다고 알고 있었기에 그리했던 것인데 간단히 정리를 해놓기로.
 
-- `[BIT[(***M***)]](https://dev.mysql.com/doc/refman/5.7/en/bit-type.html)`
+- [BIT[(***M***)]](https://dev.mysql.com/doc/refman/5.7/en/bit-type.html)
     
     A bit-value type. ***`M`*** indicates the number of bits per value, from 1 to 64. The default is 1 if ***`M`*** is omitted.
     
-- `[TINYINT[(***M***)] [UNSIGNED] [ZEROFILL]](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)`
+- [TINYINT[(***M***)] [UNSIGNED] [ZEROFILL]](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)
     
     A very small integer. The signed range is `-128` to `127`. The unsigned range is `0` to `255`.
     
-- `[BOOL](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)`, `[BOOLEAN](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)`
+- [BOOL](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)`, `[BOOLEAN](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)
     
-    These types are synonyms for `[TINYINT(1)](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html)`. A value of zero is considered false. Nonzero values are considered true:
+    These types are synonyms for [TINYINT(1)](https://dev.mysql.com/doc/refman/5.7/en/integer-types.html). A value of zero is considered false. Nonzero values are considered true:
     
 
 공식 문서의 내용이다. BOOL/BOOLEAN은 TINYINT(1)과 동의어라고 명확하게 적혀 있고, 아래에서 볼 수 있듯이 TINYINT(1)과 BIT(1)은 같은 공간을 차지 한다는 것을 알 수 있다. 
