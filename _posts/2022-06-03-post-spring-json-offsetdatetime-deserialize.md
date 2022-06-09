@@ -103,7 +103,7 @@ private OffsetDateTime expireAt;
 위에서 module에 deserializer를 재정의 한 것과 같은 코드인데 따로 클래스로 정의하고
 
 ```java
-public static class CustumOffsetDateTimeDeserializer extends JsonDeserializer<OffsetDateTime> {
+public static class CustomOffsetDateTimeDeserializer extends JsonDeserializer<OffsetDateTime> {
         @Override
         public OffsetDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
                 throws IOException {
@@ -118,7 +118,7 @@ public static class CustumOffsetDateTimeDeserializer extends JsonDeserializer<Of
 해당 필드에 애너테이션으로 적용했다.
 
 ```java
-@JsonDeserialize(using = JacksonConfig.CustumOffsetDateTimeDeserializer.class)
+@JsonDeserialize(using = JacksonConfig.CustomOffsetDateTimeDeserializer.class)
 private OffsetDateTime expireAt;
 ```
 
