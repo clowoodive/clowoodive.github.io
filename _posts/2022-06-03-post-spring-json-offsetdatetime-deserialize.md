@@ -130,11 +130,87 @@ expireAt: 2022-06-09T02:22:33+09:00
 
 이 방법은 애너테이션을 적용한 필드만 적용되기에 프로젝트 전체에서 처리가 필요하다면 module에 세팅하는 첫번째 시도가 성공할 수 있는 방법을 찾아야 한다. 하지만 현재 프로젝트에서는 딱 이 필드만 OffsetDateTime을 사용하므로 우선은 이렇게 적용하고 추후에 방법을 찾아봐야 겠다.
 
+### 추가 시도 1
+
+이 [링크](https://d2.naver.com/helloworld/0473330)에 Module을 사용한 방법과 괜찮은 개념들이 있어서 시도 했으나, RestTemplate에서는 잘 되지 않았다. 추후에 다른 케이스에서 한번 해볼 만한 좋은 내용인 것 같다.
+
+### 추가 시도 2
+
+결국 MessageConverter를 변경하는 방법으로 적용하기로 했다. 
+
+우선 해당 RestTemplate 요청에만 사용할 ObjectMapper를 선언하고, 여기에 CustomOffsetDateTimeDeserializer를 추가한 JavaTimeModule을 등록한다.
+
+```java
+public static ObjectMapper objectMapper() {
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        javaTimeModule.addDeserializer(OffsetDateTime.class, new CustomOffsetDateTimeDeserializer());
+        return new ObjectMapper()
+                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+                .configure(SerializationFeature.WRITE_DURATIONS_AS_TIMESTAMPS, false)
+                .configure(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, true)
+                .configure(MapperFeature.DEFAULT_VIEW_INCLUSION, false)
+                .registerModules(javaTimeModule);
+    }
+```
+
+그리고 위 objectMapper를 세팅한 MappingJackson2HttpMessageConverter 를 RestTemplate의 0번째 인덱스에 message converter로 등록한다. 이렇게 할 경우에는 RestTemplate이 가진 converter중에 MappingJackson2HttpMessageConverter 타입이 default까지 포함해서 2개가 되지만 인덱스가 낮은 것을 먼저 사용하기에 제대로 동작한다.
+
+```java
+var restTemplate = new RestTemplate();
+MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
+messageConverter.setObjectMapper(JacksonConfig.objectMapper());
+restTemplate.getMessageConverters().add(0, messageConverter);
+
+var res = restTemplate.exchange(domain, HttpMethod.POST, new HttpEntity<String>(body, headers), RestTemplateProto.Res.class);
+```
+
+하지만 다른 필드들을 컨버팅 하면서 문제가 생기기도 했다. 아래와 같이 이미 String으로 serialize한 것인데 message converter가 다시 변환 해버리는 것이다.
+
+```json
+string body : {"req_id":"custom call"}
+message converted body : "{\"req_id\":\"custom call\"}"
+```
+
+default로 등록된 message converter들의 순서에 영향을 받고 있었고, 내부적으로 등록되는 순서도 중요한 것 같아서 아래와 같이 message converter를 해당 index에 교체하는 방식으로 변경했다.
+
+```java
+for(inti = 0; i < restTemplate.getMessageConverters().size(); i++) {
+finalHttpMessageConverter<?> httpMessageConverter = restTemplate.getMessageConverters().get(i);
+if(httpMessageConverterinstanceofMappingJackson2HttpMessageConverter){
+        restTemplate.getMessageConverters().set(i, messageConverter);
+    }
+}
+```
+
+커스터마이징 하지 않은 RestTemplate은 여전히 아래와 같이 응답을 deserialize하면서 Z로 변경되고
+
+```json
+body : {"res_id":"default call","res_at":"2022-05-22T11:22:33+08:00"}
+
+resId: default call
+resAt: 2022-05-22T03:22:33Z
+```
+
+message converter를 교체한 후에는 offsettime값이 제대로 출력되는 것을 확인 할 수 있다.
+
+```json
+body : {"res_id":"custom call","res_at":"2022-05-22T11:22:33+08:00"}
+
+resId: custom call
+resAt: 2022-05-22T11:22:33+08:00
+```
+
 <!--
+
+[https://stackoverflow.com/questions/9381665/how-can-we-configure-the-internal-jackson-mapper-when-using-resttemplate](https://stackoverflow.com/questions/9381665/how-can-we-configure-the-internal-jackson-mapper-when-using-resttemplate)
 
 [https://d2.naver.com/helloworld/0473330](https://d2.naver.com/helloworld/0473330)
 
 [https://www.baeldung.com/spring-boot-customize-jackson-objectmapper](https://www.baeldung.com/spring-boot-customize-jackson-objectmapper)
+
+[https://kwonnam.pe.kr/wiki/springframework/springboot/json](https://kwonnam.pe.kr/wiki/springframework/springboot/json)
 
 [https://akageun.github.io/2020/01/02/java-jackson-custom-serialize.html](https://akageun.github.io/2020/01/02/java-jackson-custom-serialize.html)
 
