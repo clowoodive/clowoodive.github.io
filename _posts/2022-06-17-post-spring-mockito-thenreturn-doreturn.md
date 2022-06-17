@@ -1,5 +1,5 @@
 ---
-title: "[Spring] Mockito - when().thenReturn과 doReturn().when의 차이"
+title: "[Spring] Mockito - when().thenReturn()과 doReturn().when()의 차이"
 excerpt: ""
 
 categories:
