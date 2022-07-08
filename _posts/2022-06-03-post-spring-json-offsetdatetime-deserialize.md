@@ -176,9 +176,9 @@ message converted body : "{\"req_id\":\"custom call\"}"
 default로 등록된 message converter들의 순서에 영향을 받고 있었고, 내부적으로 등록되는 순서도 중요한 것 같아서 아래와 같이 message converter를 해당 index에 교체하는 방식으로 변경했다.
 
 ```java
-for(inti = 0; i < restTemplate.getMessageConverters().size(); i++) {
-finalHttpMessageConverter<?> httpMessageConverter = restTemplate.getMessageConverters().get(i);
-if(httpMessageConverterinstanceofMappingJackson2HttpMessageConverter){
+for (int i = 0; i < restTemplate.getMessageConverters().size(); i++) {
+    final HttpMessageConverter<?> httpMessageConverter = restTemplate.getMessageConverters().get(i);
+    if (httpMessageConverter instanceof MappingJackson2HttpMessageConverter) {
         restTemplate.getMessageConverters().set(i, messageConverter);
     }
 }
@@ -201,6 +201,9 @@ body : {"res_id":"custom call","res_at":"2022-05-22T11:22:33+08:00"}
 resId: custom call
 resAt: 2022-05-22T11:22:33+08:00
 ```
+
+코드는 [여기](https://github.com/clowoodive/pilot/tree/main/pilot-resttemplate-messageconverter-json-client) 를 참고.
+
 
 <!--
 
