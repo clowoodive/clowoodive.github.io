@@ -1,5 +1,5 @@
 ---
-title:  "[Spring-MSA] Spring Cloud Config Clinet 구축(2)"
+title:  "[Spring-MSA] Spring Cloud Config Client 구축(2)"
 excerpt: ""
 
 categories:
