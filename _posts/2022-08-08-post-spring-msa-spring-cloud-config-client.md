@@ -117,7 +117,7 @@ client를 띄운 후 브라우저로 get 요청을 하면 config server의 dev �
 - http://localhost:8080/dev/lang
 
 ```
-dev profile lang is **ko**...
+dev profile lang is ko...
 ```
 
 <!--
