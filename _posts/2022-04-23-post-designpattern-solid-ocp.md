@@ -104,6 +104,12 @@ public class InvestingController {
 
 만약 이 상태에서 다른 투자상품을 추가 하려면 `InvestingService` 인터페이스를 구현하는 service를 구현하고  `InvestingServiceFactory` 내부만 조금 수정 해 주면 된다. 이렇게 하면 호출부(컨트롤러)의 수정이 없어도 되므로 변경에 닫혀 있다고 볼 수 있다. 
 
+추가로 예를 들면 메모리 DB를 사용하다가 H2 DB를 사용하도록 변경할 때 H2 DataSource를 사용하고 Repository 인터페이스 구현하는 H2 DB용 구현체를 만들고, connection 설정 및 DI를 통한 구현체만 대체 해 주면 된다. 다른 DB로의 변경에 대한 확장에 열려 있고, 설정 및 구현체 주입 이외의 로직의 변경에는 닫혀 있다.
+
+DI 를 통한 구현체 대체를 본문 예제에서 찾아보자면 `investingServiceFactory` 의 내부 로직이라고 볼 수 있다.
+
+추가 [예시](https://github.com/clowoodive/example/tree/main/example-lecture-spring-management-member)는 이 코드의 커밋(32105f7178c6c3ea89511e4aba30aa291e5054ff) 참조.
+
 <!--
 
 [https://github.com/cheese10yun/spring-SOLID/blob/master/docs/OCP.md](https://github.com/cheese10yun/spring-SOLID/blob/master/docs/OCP.md)
