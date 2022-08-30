@@ -25,13 +25,13 @@ Front-end Proxy(proxy, load-balancer, cloud 등)가 그  뒤에서 수행되는 
 
 proxy가 `X-Forwarded-For` 나 `X-Forwarded-Proto` 와 같은 보편적인 헤더만 추가한다면 아래 속성 만으로 충분함.
 
-```groovy
+```yaml
 server.forward-headers-strategy = NATIVE
 ```
 
 Tomcat에서는 추가적으로 헤더이름을 아래처럼 커스터마이징 할 수 있음.
 
-```groovy
+```yaml
 server.tomcat.remoteip.remote-ip-header = x-your-remote-ip-header
 server.tomcat.remoteip.protocol-header = x-your-protocol-header
 ```
@@ -40,8 +40,8 @@ server.tomcat.remoteip.protocol-header = x-your-protocol-header
 
 신뢰 할 수 있는 기본 IP(127/8, 192.168/16 등) 이 있고 오버라이딩 되는지는 확인이 필요함.
 
-```groovy
-// 빈 값으로 두면 모든 proxy를 신뢰하며, 프로덕션에서는 조심해야 함.
+```yaml
+# 빈 값으로 두면 모든 proxy를 신뢰하며, 프로덕션에서는 조심해야 함.
 server.tomcat.remoteip.internal-proxies = 192\\.168\\.\\d{1,3}\\.\\d{1,3}
 ```
 
@@ -76,7 +76,7 @@ Spring Boot 버전 업그레이드를 진행 하면서 어느 시점부터 `serv
 
 application.properties
 
-```groovy
+```yaml
 logging.level.org.apache.catalina.valves = DEBUG  # RemoteIpValve.class 로그 출력
 server.forward-headers-strategy = NONE            # NONE or NATIVE or FRAMEWORK
 server.tomcat.remoteip.internal-proxies = 1\\.1\\.1\\.1|127\\.0\\.0\\.1|2\\.2\\.2\\.2
