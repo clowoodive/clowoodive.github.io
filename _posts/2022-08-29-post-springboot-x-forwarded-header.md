@@ -17,7 +17,7 @@ last_modified_at: 2022-08-29T00:00:00
 <div class="notice--primary">{{ notice-env | markdownify }}</div>
 
 
-## X-Forwarded-*
+## X-Forwarded-* header
 
 Front-end Proxy(proxy, load-balancer, cloud 등)가 그  뒤에서 수행되는 애플리케이션에게 원래의 정보(host, port, scheme 등)을 전달하기 위한 헤더들.
 
@@ -25,7 +25,7 @@ Front-end Proxy(proxy, load-balancer, cloud 등)가 그  뒤에서 수행되는 
 
 proxy가 `X-Forwarded-For` 나 `X-Forwarded-Proto` 와 같은 보편적인 헤더만 추가한다면 아래 속성 만으로 충분함.
 
-```yaml
+```groovy
 server.forward-headers-strategy = NATIVE
 ```
 
@@ -47,7 +47,7 @@ server.tomcat.remoteip.internal-proxies = 192\\.168\\.\\d{1,3}\\.\\d{1,3}
 
 그리고 valve 인스턴스 재정의를 통해 Tomcat의 `RemoteIpValve` 를 완전히 컨트롤 할 수 있음.
 
-자세한 내용은 [“**Running Behind a Front-end Proxy Server”](https://docs.spring.io/spring-boot/docs/2.5.12/reference/htmlsingle/#howto.webserver.use-behind-a-proxy-server)** 참고.
+자세한 내용은 [Running Behind a Front-end Proxy Server](https://docs.spring.io/spring-boot/docs/2.5.12/reference/htmlsingle/#howto.webserver.use-behind-a-proxy-server) 참고.
 
 ## 이슈
 
@@ -76,7 +76,7 @@ Spring Boot 버전 업그레이드를 진행 하면서 어느 시점부터 `serv
 
 application.properties
 
-```yaml
+```groovy
 logging.level.org.apache.catalina.valves = DEBUG  # RemoteIpValve.class 로그 출력
 server.forward-headers-strategy = NONE            # NONE or NATIVE or FRAMEWORK
 server.tomcat.remoteip.internal-proxies = 1\\.1\\.1\\.1|127\\.0\\.0\\.1|2\\.2\\.2\\.2
@@ -87,49 +87,49 @@ server.tomcat.remoteip.internal-proxies = 1\\.1\\.1\\.1|127\\.0\\.0\\.1|2\\.2\\.
 request.getRemoteAddr() 호출 결과 
 
 - internal-proxies 주석처리
-    - *마지막 IP(2.2.2.2)* 반환
+    - 마지막 IP(2.2.2.2) 반환
 - 모든 ip 필터링(127\\.0\\.0\\.1|1\\.1\\.1\\.1|2\\.2\\.2\\.2)
-    - **`첫번째 IP(1.1.1.1**)` 반환
+    - 첫번째 IP(1.1.1.1) 반환
 - 127.0.0.1 제외 필터링(1\\.1\\.1\\.1|2\\.2\\.2\\.2)
     - 127.0.0.1 반환 - 정상 동작
-- **`첫번째 IP(1.1.1.1**)`제외 필터링(127\\.0\\.0\\.1|2\\.2\\.2\\.2)
-    - **`첫번째 IP(1.1.1.1**)` 반환
-- *마지막 IP(2.2.2.2)* 제외 필터링(1\\.1\\.1\\.1|127\\.0\\.0\\.1)
-    - *마지막 IP(2.2.2.2)* 반환
+- 첫번째 IP(1.1.1.1) 제외 필터링(127\\.0\\.0\\.1|2\\.2\\.2\\.2)
+    - 첫번째 IP(1.1.1.1) 반환
+- 마지막 IP(2.2.2.2) 제외 필터링(1\\.1\\.1\\.1|127\\.0\\.0\\.1)
+    - 마지막 IP(2.2.2.2) 반환
 
 ### server.forward-headers-strategy = NATIVE
 
 request.getRemoteAddr() 호출 결과 
 
 - internal-proxies 주석처리
-    - *마지막 IP(2.2.2.2)* 반환
+    - 마지막 IP(2.2.2.2) 반환
 - 모든 ip 필터링
-    - **`첫번째 IP(1.1.1.1**)` 반환
+    - 첫번째 IP(1.1.1.1) 반환
 - 127.0.0.1 제외 필터링(1\\.1\\.1\\.1|2\\.2\\.2\\.2)
     - 127.0.0.1 반환 - 정상 동작
-- **`첫번째 IP(1.1.1.1**)` ****제외 필터링(127\\.0\\.0\\.1|2\\.2\\.2\\.2)
-    - **`첫번째 IP(1.1.1.1**)` 반환
-- *마지막 IP(2.2.2.2)* 제외 필터링(1\\.1\\.1\\.1|127\\.0\\.0\\.1)
-    - *마지막 IP(2.2.2.2)* 반환
+- 첫번째 IP(1.1.1.1) 제외 필터링(127\\.0\\.0\\.1|2\\.2\\.2\\.2)
+    - 첫번째 IP(1.1.1.1) 반환
+- 마지막 IP(2.2.2.2) 제외 필터링(1\\.1\\.1\\.1|127\\.0\\.0\\.1)
+    - 마지막 IP(2.2.2.2) 반환
 
 ### server.forward-headers-strategy = FRAMEWORK
 
 request.getRemoteAddr() 호출 결과 
 
 - internal-proxies 주석처리
-    - **`첫번째 IP(1.1.1.1**)` 반환
+    - 첫번째 IP(1.1.1.1) 반환
 - 모든 ip 필터링
-    - **`첫번째 IP(1.1.1.1**)` 반환
+    - 첫번째 IP(1.1.1.1) 반환
 - 127.0.0.1 제외 필터링(1\\.1\\.1\\.1|2\\.2\\.2\\.2)
-    - **`첫번째 IP(1.1.1.1**)` 반환 - 비정상
+    - 첫번째 IP(1.1.1.1) 반환 - 비정상
     - Skip RemoteIpValve for request /actuator with originalRemoteAddr '127.0.0.1’
-- **`첫번째 IP(1.1.1.1**)` 제외 필터링(127\\.0\\.0\\.1|2\\.2\\.2\\.2)
-    - **`첫번째 IP(1.1.1.1**)` ****반환
-- *마지막 IP(2.2.2.2)* 제외 필터링(1\\.1\\.1\\.1|127\\.0\\.0\\.1)
-    - **`첫번째 IP(1.1.1.1**)` 반환
+- 첫번째 IP(1.1.1.1) 제외 필터링(127\\.0\\.0\\.1|2\\.2\\.2\\.2)
+    - 첫번째 IP(1.1.1.1) 반환
+- 마지막 IP(2.2.2.2) 제외 필터링(1\\.1\\.1\\.1|127\\.0\\.0\\.1)
+    - 첫번째 IP(1.1.1.1) 반환
 
 ### 테스트 결론
 
 Spring Boot의 Emebedded Tomcat 환경에서  `X-Forwarded-For` 나 `X-Forwarded-Proto` 헤더만 사용하는 수준에서는 FRAMEWORK 옵션이 필요하지 않고 원하는 대로 동작하지 않으므로 NATIVE 사용.
 
-`server.forward-headers-strategy` 속성의 default 값은 Tomcat의 경우 NONE이며 NATIVE와 같게 동작하지만 명시적으로 NATIVE 사용 권장함.
+`server.forward-headers-strategy` 속성의 default 값은 Tomcat의 경우 NONE이며 NATIVE와 같게 동작하지만 명시적으로 NATIVE 권장.
