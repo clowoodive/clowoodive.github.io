@@ -13,26 +13,20 @@ last_modified_at: 2022-11-16T00:00:00
 
 {% capture notice-env %}
 #### Environment
-	- Java 11
-	- Spring Boot 2.5.12
-	- Spring Security 5.5.5
-    - Thymeleaf 3.0.15 RELEASE
-	- Gradle 7.5.1 
+ - Java 11
+ - Spring Boot 2.5.12
+ - Spring Security 5.5.5
+ - Thymeleaf 3.0.15 RELEASE
+ - Gradle 7.5.1 
 {% endcapture %}
 <div class="notice--primary">{{ notice-env | markdownify }}</div>
 
 
-코드는 [여기](https://github.com/clowoodive/pilot/tree/main/pilot-spring-security-thymeleaf).
+Spring Security 5.5.5 버전은 CSRF 방지 기능이 기본으로 활성화 되어 form 요청 시 자동으로 CSRF 토큰을 삽입 해 주기에 적용이라기 보다 확인에 가깝다.
 
-
-사용중인 Spring Security 5.5.5 버전은 적용하면 CSRF 방지 기능이 기본으로 활성화 되어 form 요청 시 자동으로 CSRF 토큰을 삽입 해 준다.
-
-심플하게 프로젝트를 생성해서 적용하고 확인 해 보자.
-
-여기선 다루지 않겠지만 Spring Security 5.7.0-M2 버전 부터는 세팅시 *`SecurityFilterChain`* 빈을 등록 하는 등 변경사항이 있으니  [이곳](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter) 을 참고.
+참고로 아래의 설정이 Spring Security 5.7.0-M2 버전 부터는 *`SecurityFilterChain`* 빈을 등록 하는 등 변경사항이 있으니  [이곳](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter) 을 참고하길.
 
 먼저 필요한 의존성을 세팅 해주자.
-
 build.gradle
 
 ```groovy
@@ -45,7 +39,6 @@ dependencies {
 ```
 
 그리고 디버깅하기 쉽게 로그도 조정해주고,
-
 application.properties
 
 ```bash
@@ -115,10 +108,12 @@ form을 요청하는 controller를 생성 하고
 
 ![security_thymeleaf1]({{ '/assets/images/security_thymeleaf1.png' | relative_url }}){: .align-center}
 
-이 토큰의 value값이 다르면 post 요청을 거부하게 되는데, 간단히 확인해 보려면 input 필드 자체를 지워서 토큰을 없애고 post 요청하면 토큰이 검증되지않아 403 응답을 받게 된다.
+이 토큰의 value값이 다르면 post 요청을 거부하게 되는데, 간단히 확인해 보려면 input 필드 자체를 지워서 토큰을 없애고 post 요청하면 토큰이 검증에 실패해 403 응답을 받게 된다.
 
 ![security_thymeleaf2]({{ '/assets/images/security_thymeleaf2.png' | relative_url }}){: .align-center}
 
-Reference
+코드는 [여기](https://github.com/clowoodive/pilot/tree/main/pilot-spring-security-thymeleaf).
 
-[https://docs.spring.io/spring-security/site/docs/5.5.5/reference/html5/#jc](https://docs.spring.io/spring-security/site/docs/5.5.5/reference/html5/#jc)
+### References
+
+- [https://docs.spring.io/spring-security/site/docs/5.5.5/reference/html5/#jc](https://docs.spring.io/spring-security/site/docs/5.5.5/reference/html5/#jc)
