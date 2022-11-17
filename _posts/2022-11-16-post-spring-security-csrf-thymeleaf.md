@@ -112,7 +112,7 @@ form을 요청하는 controller를 생성 하고
 
 ![security_thymeleaf2]({{ '/assets/images/security_thymeleaf2.png' | relative_url }}){: .align-center}
 
-코드는 [여기](https://github.com/clowoodive/pilot/tree/main/pilot-spring-security-thymeleaf).
+코드는 [여기](https://github.com/clowoodive/pilot/tree/main/pilot-spring-security-thymeleaf-csrf).
 
 ### References
 
