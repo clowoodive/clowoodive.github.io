@@ -95,13 +95,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 </html>
 ```
 
-form을 요청하는 controller를 생성 하고
+controller는 form을 GET/POST 할 수 있게 하고, 추가로 Spring Security에 의해 로그인 후 이동할 경로(“/”) 도 받을수 있게 한다.
 
 ```java
+@GetMapping("/")
+public String home() {
+    return "redirect:/filter/message";
+}
+
 @GetMapping("/filter/message")
-    public String createMessageForm() {
-        return "message-form";
-    }
+public String createMessageForm() {
+    return "message-form";
+}
+
+@PostMapping("/filter/message")
+@ResponseBody
+public String createMessage(MessageForm form) {
+    System.out.println("msg :" + form.getMessage());
+    return form.getMessage();
+}
 ```
 
 웹 브라우저에서 호출 해 보면 개발자 도구로 아래와 같이 _csrf 토큰이 삽입된 것을 알 수 있다.
