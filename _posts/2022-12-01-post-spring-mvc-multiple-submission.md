@@ -40,9 +40,7 @@ Spring Security의 CSRF 처리 방식과 유사하게 unique token을 사용하�
 
 미리 알아둬야 할 것은 이 두 방법 모두 동일한 요청이 동시에 들어오는 경우 제대로 처리되는지는 보장하지 못한다. 이유는 10ms 이내의 10개 스레드 호출 테스트를 30회 정도 반복하면 첫 테스트를 포함해서 확률적으로 간혹 실패하기 때문인데 테스트 프로세스 초기에 부하가 발생해서 그런 것으로 추측된다.
 
-   
-
-   
+<br><br>
 
 # Unique Token 방식
 
@@ -172,9 +170,7 @@ RequestDataValueProcessor requestDataValueProcessor() {
 spring.main.allow-bean-definition-overriding=true
 ```
 
-   
-
-   
+<br><br>
 
 # Interceptor에서 동일 요청 시간 제한 방식
 
