@@ -27,7 +27,7 @@ last_modified_at: 2022-11-16T00:00:00
 
 
 백오피스 웹서버에서 한 유저의 form POST 요청이 중복해서 발생하는 경우가 생겼다. 
-로그를 조회 해 보니 수백 ms 내에 두번의 요청이 들어왔고, 발생 경로가 특이한 것도 아니어서 전송 지연 또는 doublc click 정도를 의심 해 볼 수 있었다.
+로그를 조회 해 보니 수백 ms 내에 두번의 요청이 들어왔고, 발생 경로가 특이한 것도 아니어서 전송 지연 또는 double click 정도를 의심 해 볼 수 있었다.
 소수의 유저가 사용하고 발생 빈도도 서비스 기간에 비해 낮은 편이지만 그대로 둘 수는 없어서 방법을 찾아보니 아래와 같은 것들이 있었다.
 
 - javascript로 제출 버튼 비활성화
@@ -37,7 +37,12 @@ last_modified_at: 2022-11-16T00:00:00
 해당 서비스는 javascript를 사용하지 않고 PRG 패턴이 적용 되었음에도 문제가 발생했기에 unique token 방식으로 방향을 잡았다.
 
 Spring Security의 CSRF 처리 방식과 유사하게 unique token을 사용하는 filter 처리 방법과 간단하게 interceptor에서 요청 시간을 제한하는 방법 두가지를 시도해 본 것을 정리한다. 
+
 미리 알아둬야 할 것은 이 두 방법 모두 동일한 요청이 동시에 들어오는 경우 제대로 처리되는지는 보장하지 못한다. 이유는 10ms 이내의 10개 스레드 호출 테스트를 30회 정도 반복하면 첫 테스트를 포함해서 확률적으로 간혹 실패하기 때문인데 테스트 프로세스 초기에 부하가 발생해서 그런 것으로 추측된다.
+
+   
+
+   
 
 # Unique Token 방식
 
@@ -51,7 +56,7 @@ CsrfFilter의 코드를 베이스로 구현했는데, CsrfFilter에서는 POST �
 @Component
 public class FmsFilter extends OncePerRequestFilter {
 		
-		...
+    ...
     
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -96,7 +101,8 @@ public class FmsFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-	...
+    ...
+
 }
 ```
 
@@ -113,7 +119,8 @@ custom FMS 토큰을 동일하게 처리 할 방법을 찾지 못해서 이 `Csr
 ```java
 @Component
 public class CsrfWithFmsRequestDataValueProcessor implements RequestDataValueProcessor {
-		...
+
+    ...
 
     @Override
     public Map<String, String> getExtraHiddenFields(HttpServletRequest request) {
@@ -140,7 +147,9 @@ public class CsrfWithFmsRequestDataValueProcessor implements RequestDataValuePro
     public String processUrl(HttpServletRequest request, String url) {
         return url;
     }
-		...
+
+    ...
+
 }
 ```
 
@@ -155,7 +164,17 @@ RequestDataValueProcessor requestDataValueProcessor() {
 }
 ```
 
-테스트 코드로 확인 해 보면 같은 FMS 토큰으로 POST 요청 시 406 코드가 반환되고, 5ms 이상의 간격으로 들어오는 POST 요청을 FMS 토큰으로 잘 필터링 해준다. 
+테스트 코드로 확인 해 보면 같은 FMS 토큰으로 POST 요청 시 406 코드가 반환되고, 5ms 이상의 간격으로 들어오는 POST 요청을 FMS 토큰으로 잘 필터링 해준다.
+
+그리고 `BeanDefinitionOverrideException` 을 피하기 위해서는 Spring 5.1이 반영된 Spring Boot 2.1 버전 부터 아래와 같이 세팅이 필요하다.
+
+```bash
+spring.main.allow-bean-definition-overriding=true
+```
+
+   
+
+   
 
 # Interceptor에서 동일 요청 시간 제한 방식
 
