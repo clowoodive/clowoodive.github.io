@@ -20,6 +20,8 @@ last_modified_at: 2023-01-01T00:00:00
 
 스프링 부트 초기 구동 후 코드를 실행하는 방법 몇가지를 알아본다.
 
+<br><br>
+
 # CommandLineRunner
 
 이 인터페이스 구현체를 빈으로 등록하면 초기화 구동 후 run 메소드를 실행 해 준다.
@@ -190,6 +192,8 @@ public class DemoApplicationReadyEvent {
 
 <br><br>
 
+# 실행 순서
+
 세가지 방법 모두 동시에 사용 가능하며, 이 경우 실행 순서는 아래와 같다.
 
 ```java
@@ -215,44 +219,44 @@ ApplicationRunner와 CommandLineRunner의 순서는 @Order 애노테이션으로
 
 ```java
 public ConfigurableApplicationContext run(String... args) {
-		StopWatch stopWatch = new StopWatch();
-		stopWatch.start();
-		DefaultBootstrapContext bootstrapContext = createBootstrapContext();
-		ConfigurableApplicationContext context = null;
-		configureHeadlessProperty();
-		SpringApplicationRunListeners listeners = getRunListeners(args);
-		listeners.starting(bootstrapContext, this.mainApplicationClass);
-		try {
-			ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
-			ConfigurableEnvironment environment = prepareEnvironment(listeners, bootstrapContext, applicationArguments);
-			configureIgnoreBeanInfo(environment);
-			Banner printedBanner = printBanner(environment);
-			context = createApplicationContext();
-			context.setApplicationStartup(this.applicationStartup);
-			prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);
-			refreshContext(context);
-			afterRefresh(context, applicationArguments);
-			stopWatch.stop();
-			if (this.logStartupInfo) {
-				new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
-			}
-			listeners.started(context);
-			callRunners(context, applicationArguments); // 내부에서 Runner 세팅 및 call
+	StopWatch stopWatch = new StopWatch();
+	stopWatch.start();
+	DefaultBootstrapContext bootstrapContext = createBootstrapContext();
+	ConfigurableApplicationContext context = null;
+	configureHeadlessProperty();
+	SpringApplicationRunListeners listeners = getRunListeners(args);
+	listeners.starting(bootstrapContext, this.mainApplicationClass);
+	try {
+		ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+		ConfigurableEnvironment environment = prepareEnvironment(listeners, bootstrapContext, applicationArguments);
+		configureIgnoreBeanInfo(environment);
+		Banner printedBanner = printBanner(environment);
+		context = createApplicationContext();
+		context.setApplicationStartup(this.applicationStartup);
+		prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);
+		refreshContext(context);
+		afterRefresh(context, applicationArguments);
+		stopWatch.stop();
+		if (this.logStartupInfo) {
+			new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), stopWatch);
 		}
-		catch (Throwable ex) {
-			handleRunFailure(context, ex, listeners);
-			throw new IllegalStateException(ex);
-		}
-
-		try {
-			listeners.running(context); // 내부에서 ApplicationReadyEvent publish
-		}
-		catch (Throwable ex) {
-			handleRunFailure(context, ex, null);
-			throw new IllegalStateException(ex);
-		}
-		return context;
+		listeners.started(context);
+		callRunners(context, applicationArguments); // 내부에서 Runner 세팅 및 call
 	}
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, listeners);
+		throw new IllegalStateException(ex);
+	}
+	
+	try {
+		listeners.running(context); // 내부에서 ApplicationReadyEvent publish
+	}
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, null);
+		throw new IllegalStateException(ex);
+	}
+	return context;
+}
 ```
 
 코드는 [여기](https://github.com/clowoodive/gitblog.example).
