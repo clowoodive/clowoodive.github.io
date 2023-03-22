@@ -63,6 +63,14 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                {% if category[0] == "Architecture" %}
+                <li><a href="/categories/architecture" class="" style="padding-left: 20px;"> 📂 Architecture
+                        ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                 {% if category[0] == "JavaEtc" %}
                 <li><a href="/categories/javaetc" class="" style="padding-left: 20px;"> 📂 Java ETC
                         ({{category[1].size}})</a></li>
