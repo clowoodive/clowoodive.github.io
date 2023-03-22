@@ -3,8 +3,9 @@ title: "[Spring Boot] 스프링 부트 애플리이션 초기화 후 코드를 �
 excerpt: ""
 
 categories:
-  - Spring Boot
+  - Spring
 tags:
+  - Spring Boot
   - Runner
 last_modified_at: 2023-01-01T00:00:00
 ---

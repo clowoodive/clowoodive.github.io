@@ -3,11 +3,13 @@ title:  "[Spring Boot/Java] Jar & War"
 excerpt: "내장 tomcat을 사용해서 서비스 한다면 Jar파일로 패키징 하더라도 실행 가능하다"
 
 categories:
-  - Spring Boot
+  - Spring
   - Java
 tags:
   - Spring Boot
   - Java
+  - jar
+  - war
 last_modified_at: 2022-06-30T00:00:00
 ---
 

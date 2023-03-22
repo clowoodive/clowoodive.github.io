@@ -53,14 +53,14 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <ul>
+            <!-- <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Spring Boot" %}
                 <li><a href="/categories/spring-boot" class="" style="padding-left: 20px;"> 📂 Spring Boot
                         ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
-            </ul>
+            </ul> -->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Architecture" %}

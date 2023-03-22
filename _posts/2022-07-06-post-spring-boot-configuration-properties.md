@@ -3,9 +3,10 @@ title: "[Spring Boot] @ConfigurationProperties로 구성 속성 바인딩 하는
 excerpt: ""
 
 categories:
-  - Spring Boot
+  - Spring
 tags:
   - Configuration
+  - Spring Boot
 last_modified_at: 2022-07-06T00:00:00
 ---
 

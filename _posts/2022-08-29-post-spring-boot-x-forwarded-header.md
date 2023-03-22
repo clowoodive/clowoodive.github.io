@@ -3,9 +3,10 @@ title: "[Spring Boot] X-Forwarded-* header(헤더에서 client IP 추출)"
 excerpt: ""
 
 categories:
-  - Spring Boot
+  - Spring
 tags:
   - Configuration
+  - Spring Boot
 last_modified_at: 2022-08-29T00:00:00
 ---
 
