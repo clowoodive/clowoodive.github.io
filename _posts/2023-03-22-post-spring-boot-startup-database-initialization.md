@@ -3,7 +3,7 @@ title: "[Spring Boot] 구동 시 SQL 데이터베이스 초기화(H2, MySQL)"
 excerpt: ""
 
 categories:
-  - Spring Boot
+  - Spring
 tags:
   - SQL
   - Database Initialization

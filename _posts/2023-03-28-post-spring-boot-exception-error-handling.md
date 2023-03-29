@@ -1,5 +1,5 @@
 ---
-title: "[Spring Boot] 구동 시 SQL 데이터베이스 초기화(H2, MySQL)"
+title: "[Spring MVC] Spring Boot에서 @RestControllerAdvice 이용한 Error Handling 하기"
 excerpt: ""
 
 categories:
