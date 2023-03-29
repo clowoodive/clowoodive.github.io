@@ -45,6 +45,7 @@ Spring Security의 CSRF 처리 방식과 유사하게 unique token을 사용하�
 # Unique Token 방식
 
 Spring Security의 CSRF 방지 토큰 적용에 대해 지난 포스팅에서 알아봤었는데, 이와 유사한 방식으로 custom filter를 등록해서 Form Multiple Submit(FMS) 라 명명한 토큰을 form에 삽입하고 POST 요청시 토큰 검증을 통해 요청을 처리/거절 하는 방식이다.
+Spring Security의 CSRF와 다른 점은 form의 GET 요청시 항상 새로운 토큰이 발급되고 해당 form 제출시에 토큰은 만료된다는 것이다.
 
 ## FmsFilter 구현
 
@@ -158,7 +159,7 @@ request에서 FMS 토큰을 추출해서 `hiddenFields` map에 담는 부분(주
 ```java
 @Bean
 RequestDataValueProcessor requestDataValueProcessor() {
-		return new CsrfWithFmsRequestDataValueProcessor();
+    return new CsrfWithFmsRequestDataValueProcessor();
 }
 ```
 
