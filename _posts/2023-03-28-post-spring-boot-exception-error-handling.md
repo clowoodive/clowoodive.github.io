@@ -8,7 +8,7 @@ tags:
   - Spring Boot
   - MVC
   - Error
-  - @ControllerAdvice
+  - ControllerAdvice
 last_modified_at: 2023-03-28T00:00:00
 ---
 
