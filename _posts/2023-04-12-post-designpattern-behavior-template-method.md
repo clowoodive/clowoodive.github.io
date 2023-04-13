@@ -10,7 +10,7 @@ last_modified_at: 2023-04-12T00:00:00
 ---
 
 
-# 정의
+## 정의
 
 기본 알고리즘을 일련의 메서드들로 나누어 슈퍼 클래스의 템플릿 메서드 내부에서 나누어진 일련의 메서드들을 호출함. 그리고 서브 클래스에서 그 일련의 메서드들 중 일부를 재정의 함으로써 확장하는 패턴.
 
@@ -20,7 +20,7 @@ last_modified_at: 2023-04-12T00:00:00
 
 ![design-pattern-template-method1]({{ '/assets/images/design-pattern-template-method1.png' | relative_url }}){: .align-center}
 
-# 예제
+## 예제
 
 ```java
 public abstract class TemplateMethodClass {
@@ -113,13 +113,13 @@ concrete2 step3
 template step4
 ```
 
-# 적용 케이스
+## 적용 케이스
 
 - 클라이언트에서 알고리즘의 특정 단계만 확장하게 하고 싶을때
 - 거대한 모놀리식 알고리즘의 공통 부분을 재사용하고 개별 단계로 나누고 싶을때
 - 거의 같은 알고리즘을 사용하는 여러 클래스가 있을때
 
-# 고려사항
+## 고려사항
 
 - 메소드 단계가 너무 많으면 유지가 어려움
 - 템플릿 메서드는 상속을 기반으로 하는 클래스 수준의 정적인 패턴이기에, 합성을 기반으로 하는  런타임 수준의 동적인 전략(Strategy) 패턴이 더 유리 할 수 있음
