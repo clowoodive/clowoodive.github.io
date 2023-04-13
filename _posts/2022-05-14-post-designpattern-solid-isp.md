@@ -1,13 +1,11 @@
 ---
-title:  "[디자인 패턴] SOLID - 인터페이스 분리 원칙(Interface Segregation Principle)"
+title:  "[Design Pattern-SOLID] 인터페이스 분리 원칙(Interface Segregation Principle)"
 excerpt: "클래스는 자신이 사용하지 않는 메소드에 의존 관계를 맺으면 안된다"
 
 categories:
-  - 디자인 패턴
-  - OOP
+  - Design Pattern
 tags:
-  - 디자인 패턴
-  - OOP
+  - SOLID
 last_modified_at: 2022-05-14T00:00:00
 ---
 

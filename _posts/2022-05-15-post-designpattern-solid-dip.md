@@ -1,13 +1,11 @@
 ---
-title:  "[디자인 패턴] SOLID - 의존관계 역전 원칙(Dependency Inversion Principle)"
+title:  "[Design Pattern-SOLID] 의존관계 역전 원칙(Dependency Inversion Principle)"
 excerpt: "전통적인 의존관계를 반전시킴으로써 상위 계층을 하위 계층의 구현으로부터 분리하라"
 
 categories:
-  - 디자인 패턴
-  - OOP
+  - Design Pattern
 tags:
-  - 디자인 패턴
-  - OOP
+  - SOLID
 last_modified_at: 2022-05-15T00:00:00
 ---
 

@@ -1,13 +1,11 @@
 ---
-title:  "[디자인 패턴] SOLID - 리스코프 치환 원칙(Liskov Substitution Principle)"
+title:  "[Design Pattern-SOLID] 리스코프 치환 원칙(Liskov Substitution Principle)"
 excerpt: "프로그램의 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 객체로 바꿀 수 있어야 한다"
 
 categories:
-  - 디자인 패턴
-  - OOP
+  - Design Pattern
 tags:
-  - 디자인 패턴
-  - OOP
+  - SOLID
 last_modified_at: 2022-05-05T00:00:00
 ---
 

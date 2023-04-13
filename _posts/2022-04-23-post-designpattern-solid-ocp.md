@@ -1,13 +1,11 @@
 ---
-title:  "[디자인 패턴] SOLID - 개방 폐쇄 원칙(Open/closed Principle)"
+title:  "[Design Pattern-SOLID] 개방 폐쇄 원칙(Open/closed Principle)"
 excerpt: "소프트웨어 개체(클래스, 모듈 함수 등등)는 확장에 대해 열려있어야 하고, 변경에 대해서는 닫혀 있어야 한다."
 
 categories:
-  - 디자인 패턴
-  - OOP
+  - Design Pattern
 tags:
-  - 디자인 패턴
-  - OOP
+  - SOLID
 last_modified_at: 2022-04-23T00:00:00
 ---
 

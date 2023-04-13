@@ -1,13 +1,11 @@
 ---
-title:  "[디자인 패턴] SOLID - 단일 책임 원칙(Single Responsibility Principle)"
+title:  "[Design Pattern-SOLID] 단일 책임 원칙(Single Responsibility Principle)"
 excerpt: "응집도가 높고 결합도가 낮은 클래스"
 
 categories:
-  - 디자인 패턴
-  - OOP
+  - Design Pattern
 tags:
-  - 디자인 패턴
-  - OOP
+  - SOLID
 last_modified_at: 2022-04-11T00:00:00
 ---
 
