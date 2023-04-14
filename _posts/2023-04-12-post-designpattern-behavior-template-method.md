@@ -1,11 +1,12 @@
 ---
-title:  "[Design Pattern-행위] 템플릿 메서드(Template Method) 패턴"
+title: "[Design Pattern-행위] 템플릿 메서드(Template Method) 패턴"
 excerpt: ""
 
 categories:
   - Design Pattern
 tags:
   - 행위 패턴
+  - 상속
 last_modified_at: 2023-04-12T00:00:00
 ---
 
@@ -86,14 +87,15 @@ class ConcreteClass2 extends TemplateMethodClass {
 
 ```java
 @Test
-    void templateMethod() {
-        System.out.println("----- concrete1 -----");
-        TemplateMethodClass concrete1 = new ConcreteClass1();
-        concrete1.templateMethod();
-        System.out.println("----- concrete2 -----");
-        TemplateMethodClass concrete2 = new ConcreteClass2();
-        concrete2.templateMethod();
-    }
+void templateMethod() {
+    System.out.println("----- concrete1 -----");
+    TemplateMethodClass concrete1 = new ConcreteClass1();
+    concrete1.templateMethod();
+
+    System.out.println("----- concrete2 -----");
+    TemplateMethodClass concrete2 = new ConcreteClass2();
+    concrete2.templateMethod();
+}
 ```
 
 출력 결과.
