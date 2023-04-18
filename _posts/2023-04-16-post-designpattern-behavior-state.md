@@ -92,7 +92,7 @@ public class StateContext {
         @Override
         void stop() {
             this.stateContext.changeState(new ReadyState(this.stateContext));
-            System.out.println("play state - stop() called, change to stp state");
+            System.out.println("play state - stop() called, change to stop state");
             this.stateContext.stopMusic();
         }
 
