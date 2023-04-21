@@ -176,7 +176,7 @@ editor.clipboard : text1(copied to clipboard)더
 <details>
 
   <summary> 참고문서의 예제처럼 복잡한 기능을 사용한 예제 </summary>
-
+  <div markdown="1">
 
 ```java
 //  - 인터페이스 대신 추상 클래스를 상속한 커맨드 사용
@@ -339,7 +339,7 @@ void command() {
     System.out.println("editor.clipboard : " + application.editorReceiver.getClipboard());
 }
 ```
-
+  </div>
 </details>
 
 <br>
