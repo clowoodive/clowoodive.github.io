@@ -127,6 +127,8 @@ AlarmSubscriber receive Type(lower) Message(gauge is under 20, now 19)
 
 - 한 객체의 변경상태를 알아야 할 다른 객체들을 미리 알수 없거나 동적으로 변할 때
 - 한 객체의 변경상태를 일정 시간 또는 특정 경우에만 다른 객체들이 알아야 할 때
+- java.util.EventListener
+- javax.servlet.http.HttpSessionAttributeListener
 
 ## 고려사항
 

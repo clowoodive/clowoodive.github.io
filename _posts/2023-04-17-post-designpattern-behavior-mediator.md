@@ -248,6 +248,8 @@ Component2 receive move from component3
 - 강한 결합으로 묶인 클래스들을 분리 할 때
 - 재사용하기 어려운 의존성으로 엮여 있을 때
 - 컴포넌트 변경 없이 컴포넌트 간 상호작용을 새로운 방법으로 정의하고 싶을 때
+- java.util.Timer
+- java.util.concurrent.Executor.execute()
 
 ## 고려사항
 

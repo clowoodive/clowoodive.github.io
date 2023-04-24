@@ -88,6 +88,7 @@ strategy2 calculate weight : 2
 - 거대한 조건문으로 구성된 알고리즘을 분리하고 싶을 때
 - 런타임 중에 알고리즘을 바꾸고 싶을 때
 - 일부 알고리즘만 차이가 있는 유사한 여러 클래스가 있을 때
+- Collections.sort() - java.util.Comparator.compare()
 
 ## 고려사항
 
