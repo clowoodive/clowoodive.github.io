@@ -168,7 +168,7 @@ pasteCommand executed, clipboard copy to editor.text2
 ----- after -----
 editor.text1 : text1
 editor.text2 : text1(copied to clipboard)(and copied to text2)
-editor.clipboard : text1(copied to clipboard)더
+editor.clipboard : text1(copied to clipboard)
 ```
 
 ## 더 복잡한 구조의 예제는 아래 펼쳐보기.
