@@ -6,7 +6,7 @@ categories:
   - Design Pattern
 tags:
   - 행위 패턴
-last_modified_at: 2023-05-08T00:00:00
+last_modified_at: 2023-05-06T00:00:00
 ---
 
 
@@ -17,6 +17,7 @@ last_modified_at: 2023-05-08T00:00:00
 상태 스냅샷을 생성하고자 하는 그 객체(originator)에게 생성/복원을 위임해서 private 필드들도 복사 할 수 있으며, 생성된 메멘토는 Caretaker라는 객체를 사용해서 보관하고 관리 할 수 있음.
 
 ![design-pattern-memento1]({{ '/assets/images/design-pattern-memento1.png' | relative_url }}){: .align-center}
+
 ## 예제
 
 ```java
