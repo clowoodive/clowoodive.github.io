@@ -119,8 +119,8 @@ ServiceProxy method2 call - using cache
 - 원래 서비스 객체에 대한 요청들을 로깅 하고 싶을 때(로깅 프록시)
 - 원래 서비스로의 요청 결과를 캐시하고 캐시 수명을 관리 하고 싶을 때(캐싱 프록시)
 - 원래 서비스 객체의 클라이언트들이 참조중인지 확인하여 자원을 해제하는 등의 관리가 필요할때
-- java.util.Arrays.asList()
-- java.util.Collections.list()
+- java.lang.reflect.Proxy
+- javax.inject.Inject
 
 ## 고려사항
 
