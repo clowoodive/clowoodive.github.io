@@ -34,10 +34,7 @@ Spring WebFlux에 포함된 HTTP client로 스레드나 동시성을 직접 다�
 - [Reactor Netty](https://github.com/reactor/reactor-netty)
 - [Jetty Reactive HttpClient](https://github.com/jetty-project/jetty-reactive-httpclient)
 - [Apache HttpComponents](https://hc.apache.org/index.html)
-
-<br>
-<br>
-
+---
 # 2. 구성
 
 ## 2.1 WebClient 생성(Static Method)
