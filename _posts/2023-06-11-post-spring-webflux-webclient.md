@@ -35,6 +35,10 @@ Spring WebFlux에 포함된 HTTP client로 스레드나 동시성을 직접 다�
 - [Jetty Reactive HttpClient](https://github.com/jetty-project/jetty-reactive-httpclient)
 - [Apache HttpComponents](https://hc.apache.org/index.html)
 
+  
+
+  
+
 # 2. 구성
 
 ## 2.1 WebClient 생성(Static Method)
@@ -95,9 +99,10 @@ WebClient webClient = WebClient.builder()
         .build();
 ```
 
-## 2.4 Reactor Netty
 
-### 2.4.1 Reactor Netty client를 사용자 지정 할 경우 설정
+# 3. Reactor Netty client로 구성
+
+## 3.1 Reactor Netty client를 사용자 지정 할 경우 설정
 
 ```java
 HttpClient httpClient = HttpClient.create().secure(sslSpec -> ...);
@@ -107,7 +112,7 @@ WebClient webClient = WebClient.builder()
         .build();
 ```
 
-### 2.4.2 Resource
+## 3.2 Resource
 
 기본적으로 `HttpClient` 는 event loop threads 와 connection pool을 포함하는 Reactor Netty resources에 참여하게 되고, 이 글로벌 리소스는 프로세스 종료 전까지 활성화 된 상태로 유지됨.
 
@@ -122,7 +127,7 @@ public ReactorResourceFactory reactorResourceFactory() {
 
 글로벌 리소스를 사용하지 않게 설정하는 경우는 [공식문서](https://docs.spring.io/spring-framework/docs/5.3.18/reference/html/web-reactive.html#webflux-client-builder) 참고.
 
-### 2.4.3 Timeouts
+## 3.3 Timeouts
 
 connection timeout.
 
@@ -173,23 +178,25 @@ WebClient.create().get()
         .bodyToMono(String.class);
 ```
 
-## 2.5 용어 개념
 
-### 2.5.1 Mono & Flux reactive type
+
+# 4. 용어 개념
+
+## 4.1 Mono & Flux reactive type
 
 - Mono는 0~1개의 응답을 받는 개념의 publisher
 - Flux는 0~N개의 응답을 받는 개념의 publisher
 
-### 2.5.2 sync & async
+## 4.2 sync & async
 
 - 동기식은 `subscribe()` 등을 사용해서 요청/응답 콜백
 - 비동기식은 `block()` 을 사용해서 요청/응답 처리
 
-## 2.6 retrieve()
+# 5. retrieve()
 
 응답을 간단하게 추출하는 메서드.
 
-### 2.6.1 toEntity()
+## 5.1 toEntity()
 
 ResponseEntity 타입으로 body를 추출.
 
@@ -202,7 +209,7 @@ Mono<ResponseEntity<Person>> result = client.get()
         .toEntity(Person.class);
 ```
 
-### 2.6.2 bodyToMono()
+## 5.2 bodyToMono()
 
 body만 추출.
 
@@ -215,7 +222,7 @@ Mono<Person> result = client.get()
         .bodyToMono(Person.class);
 ```
 
-### 2.6.3 bodyToFlux()
+## 5.3 bodyToFlux()
 
 디코딩된 객체 스트림을 추출.
 
@@ -226,7 +233,7 @@ Flux<Quote> result = client.get()
         .bodyToFlux(Quote.class);
 ```
 
-### 2.6.4 에러 상태 코드에 따른 처리
+## 5.4 에러 상태 코드에 따른 처리
 
 ```java
 Mono<Person> result = client.get()
@@ -237,7 +244,7 @@ Mono<Person> result = client.get()
         .bodyToMono(Person.class);
 ```
 
-## 2.7 Exchange
+# 6. Exchange
 
 응답 상태코드에 따른 처리.
 
@@ -256,7 +263,7 @@ Mono<Person> entityMono = client.get()
         });
 ```
 
-## 2.8 Request Body
+# 7. Request Body
 
 아래 예제 방식 외에도 Mono/Flux 타입 객체를 body로 인코딩 할 수 있음.
 
@@ -271,11 +278,11 @@ Mono<Void> result = client.post()
         .bodyToMono(Void.class);
 ```
 
-## 2.9 Filters
+# 8. Filters
 
 요청을 가로채서 검사하거나 수정, 로깅 할 수 있음.
 
-### 2.9.1 사용자 지정 filter 사용법
+## 8.1 사용자 지정 filter 사용법
 
 ```java
 ExchangeFilterFunction filterFunction = (clientRequest, nextFilter) -> {
@@ -288,7 +295,7 @@ WebClient webClient = WebClient.builder()
   .build();
 ```
 
-### 2.9.2 표준 filter
+## 8.2 표준 filter
 
 인증 헤더를 요청에 추가해주는 `basicAuthentication()` 제공.
 
@@ -300,7 +307,7 @@ WebClient client = WebClient.builder()
         .build();
 ```
 
-## 2.10 Attributes
+# 9. Attributes
 
 WebClient.Builder 레벨에서 전역 콜백을 구성해서 모든 요청에 속성을 삽입 할 수 있음(i.e. Spring MVC 애플리케이션에서 ThreadLocal 데이터를 기반으로 요청 속성을 채우기).
 
@@ -322,9 +329,9 @@ client.get().uri("https://example.org/")
     }
 ```
 
-## 2.11 동기식 사용(Synchronous Use)
+# 10. 동기식 사용(Synchronous Use)
 
-### 2.11.1 단일 요청
+## 10.1 단일 요청
 
 ```java
 Person person = client.get().uri("/person/{id}", i).retrieve()
@@ -337,7 +344,7 @@ List<Person> persons = client.get().uri("/persons").retrieve()
     .block();
 ```
 
-## 2.11.2 다중 요청
+## 10.2 다중 요청
 
 여러 요청을 각각 block하는 것은 비효율 적이므로, 묶어서 요청하고 block 하는 방식도 가능.
 
@@ -357,13 +364,16 @@ Map<String, Object> data = Mono.zip(personMono, hobbiesMono, (person, hobbies) -
         .block();
 ```
 
-## 2.11.3 Spring MVC controller 에서의 Mono/Flux
+# 11. Spring MVC controller 에서의 Mono/Flux
 
 Spring MVC나 Spring WebFlux controller에서 클라이언트 호출 결과를 반환해야 할 경우에는 block을 사용하지 않고 reactive type(Mono/Flux)를  return 하면 됨.
 
 <!--
+
 예제 코드가 적용된 프로젝트는 [여기](https://github.com/clowoodive/toy/tree/main/investing).
+
 -->
+
 ### References
 
 - [https://docs.spring.io/spring-framework/docs/5.3.18/reference/html/web-reactive.html#webflux-client-body](https://docs.spring.io/spring-framework/docs/5.3.18/reference/html/web-reactive.html#webflux-client)
