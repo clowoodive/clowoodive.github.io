@@ -35,7 +35,9 @@ Spring WebFlux에 포함된 HTTP client로 스레드나 동시성을 직접 다�
 - [Jetty Reactive HttpClient](https://github.com/jetty-project/jetty-reactive-httpclient)
 - [Apache HttpComponents](https://hc.apache.org/index.html)
 
----
+<br>
+
+<br>
 
 # 2. 구성
 
@@ -97,6 +99,11 @@ WebClient webClient = WebClient.builder()
         .build();
 ```
 
+  
+
+<br>
+
+<br>
 
 # 3. Reactor Netty client로 구성
 
@@ -176,6 +183,12 @@ WebClient.create().get()
         .bodyToMono(String.class);
 ```
 
+  
+
+<br>
+
+<br>
+
 # 4. 용어 개념
 
 ## 4.1 Mono & Flux reactive type
@@ -187,6 +200,12 @@ WebClient.create().get()
 
 - 동기식은 `subscribe()` 등을 사용해서 요청/응답 콜백
 - 비동기식은 `block()` 을 사용해서 요청/응답 처리
+
+  
+
+<br>
+
+<br>
 
 # 5. retrieve()
 
@@ -240,6 +259,12 @@ Mono<Person> result = client.get()
         .bodyToMono(Person.class);
 ```
 
+  
+
+<br>
+
+<br>
+
 # 6. Exchange
 
 응답 상태코드에 따른 처리.
@@ -259,6 +284,12 @@ Mono<Person> entityMono = client.get()
         });
 ```
 
+  
+
+<br>
+
+<br>
+
 # 7. Request Body
 
 아래 예제 방식 외에도 Mono/Flux 타입 객체를 body로 인코딩 할 수 있음.
@@ -273,6 +304,12 @@ Mono<Void> result = client.post()
         .retrieve()
         .bodyToMono(Void.class);
 ```
+
+  
+
+<br>
+
+<br>
 
 # 8. Filters
 
@@ -303,6 +340,12 @@ WebClient client = WebClient.builder()
         .build();
 ```
 
+  
+
+<br>
+
+<br>
+
 # 9. Attributes
 
 WebClient.Builder 레벨에서 전역 콜백을 구성해서 모든 요청에 속성을 삽입 할 수 있음(i.e. Spring MVC 애플리케이션에서 ThreadLocal 데이터를 기반으로 요청 속성을 채우기).
@@ -324,6 +367,12 @@ client.get().uri("https://example.org/")
 
     }
 ```
+
+  
+
+<br>
+
+<br>
 
 # 10. 동기식 사용(Synchronous Use)
 
@@ -359,6 +408,10 @@ Map<String, Object> data = Mono.zip(personMono, hobbiesMono, (person, hobbies) -
         })
         .block();
 ```
+
+<br>
+
+<br>
 
 # 11. Spring MVC controller 에서의 Mono/Flux
 
