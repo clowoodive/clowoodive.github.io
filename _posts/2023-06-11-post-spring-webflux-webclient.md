@@ -37,7 +37,9 @@ Spring WebFlux에 포함된 HTTP client로 스레드나 동시성을 직접 다�
 
   
 
-  
+<br>
+
+<br>
 
 # 2. 구성
 
@@ -99,6 +101,7 @@ WebClient webClient = WebClient.builder()
         .build();
 ```
 
+---
 
 # 3. Reactor Netty client로 구성
 
@@ -177,8 +180,6 @@ WebClient.create().get()
         .retrieve()
         .bodyToMono(String.class);
 ```
-
-
 
 # 4. 용어 개념
 
