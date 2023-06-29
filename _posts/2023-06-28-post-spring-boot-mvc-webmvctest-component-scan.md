@@ -33,20 +33,20 @@ last_modified_at: 2023-06-28T00:00:00
 class MyControllerUnitTest {
 
 	@Autowired
-  MockMvc mockMvc;
+	MockMvc mockMvc;
 	
 	@Test
 	void testPayment() {
 		...
 		var resultActions = mockMvc.perform(
-                post("/app/pay")
+					post("/app/pay")
 		);
 		...
 	}
 }
 ```
 
-## 1.1 Custom Filter 1
+## 1.1. Custom Filter 1
 
 ```java
 @Component
@@ -61,7 +61,7 @@ public class AppOncePerRequestFilter extends OncePerRequestFilter {
 }
 ```
 
-## 1.2 Custom Filter 2
+## 1.2. Custom Filter 2
 
 ```java
 @Component
@@ -76,7 +76,7 @@ public class ActuatorOncePerRequestFilter extends OncePerRequestFilter {
 }
 ```
 
-## 1.3 Custom Filter 등록
+## 1.3. Custom Filter 등록
 
 ```java
 @Component
@@ -106,12 +106,11 @@ public class FilterConfig {
 
 # 2. 원인
 
-`@WebMvcTest` 에서 자동 구성 및 자동 구성 제외되는 항목에 따라 
-Filter를 구현한 Custom Filter 1과 2는 필터로 등록이 되었지만, `@Component` 애노테이션이 붙은 `FilterConfig` 는 등록되지 않았기 때문에 경로 설정이 되지 않아 모든 필터 통과.
+`@WebMvcTest` 에서 자동 구성 및 자동 구성 제외되는 항목에 따라 Filter를 구현한 Custom Filter 1과 2는 필터로 등록이 되었지만, `@Component` 애노테이션이 붙은 `FilterConfig` 는 등록되지 않았기 때문에 경로 설정이 되지 않아 모든 필터 통과.
 
 `@SpringBootTest` 와 `@AutoConfigureMockMvc` 를 이용해서 모든 구성을 완전하게 로드 해서 테스트 할 수 있지만 단위테스트를 추구하기 위해 이 방법은 배제함.
 
-## 2.1 @WebMvcTest 자동 구성
+## 2.1. @WebMvcTest 자동 구성
 
 - `@Controller`
 - `@ControllerAdvice`
@@ -124,7 +123,7 @@ Filter를 구현한 Custom Filter 1과 2는 필터로 등록이 되었지만, `@
 - `WebMvcRegistrations`
 - `HandlerMethodArgumentResolver`
 
-## 2.2 자동구성 제외 애노테이션
+## 2.2. 자동구성 제외 애노테이션
 
 - `@Component`
 - `@ConfigurationProperties`
@@ -164,7 +163,7 @@ Filter를 구현한 Custom Filter 1과 2는 필터로 등록이 되었지만, `@
 })
 ```
 
-## 4.1 Bean 등록을 통해 의존 Bean 참조 문제 해결
+## 4.1. Bean 등록을 통해 의존 Bean 참조 문제 해결
 
 `@WebMvcTest` 와 함께 `@Import` 를 사용해서 해결하거나
 
@@ -194,7 +193,7 @@ void testPayment() {
 
 # 5. 정리
 
-Spring Boot에서 제공하는 자동구성이 적용되는 `@WebMvcTest` 와 같은 테스트 애노테이션을 사용 할 때는 테스트가 정상 작동하더라도 이번의 경우처럼 구성이 잘못 되었을 수 있으므로, 자동구성 항목, 자동구성 제외 항목을 잘 살펴보고 꼼꼼하게 세팅할 필요가 있음.
+Spring Boot에서 제공하는 자동구성이 적용되는 `@WebMvcTest` 와 같은 테스트 애노테이션을 사용 할 때는 테스트가 정상 작동하더라도 이번의 경우처럼 구성이 잘못 되었을 수 있으므로, 자동구성 항목/ 자동구성 제외 항목을 잘 살펴보고 꼼꼼하게 세팅할 필요가 있음.
 
 <!--
 
