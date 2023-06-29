@@ -7,7 +7,7 @@ categories:
 tags:
   - Spring Boot
   - MVC
-  - @WebMvcText
+  - WebMvcTest
   - ComponentScan
   - Filter
   - Test
