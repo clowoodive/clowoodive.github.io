@@ -32,17 +32,17 @@ last_modified_at: 2023-06-28T00:00:00
 @WebMvcTest(value = AppController.class)
 class MyControllerUnitTest {
 
-	@Autowired
-	MockMvc mockMvc;
+    @Autowired
+    MockMvc mockMvc;
 	
-	@Test
-	void testPayment() {
-		...
-		var resultActions = mockMvc.perform(
-					post("/app/pay")
-		);
-		...
-	}
+    @Test
+    void testPayment() {
+        ...
+        var resultActions = mockMvc.perform(
+                post("/app/pay")
+        );
+        ...
+    }
 }
 ```
 
@@ -69,7 +69,7 @@ public class ActuatorOncePerRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-				// logging
+        // logging
 
         chain.doFilter(wrappingRequest, response);
     }
@@ -179,11 +179,11 @@ WebEndpointProperties webEndpointProperties;
 
 @Test
 void testPayment() {
-	...
-	var resultActions = mockMvc.perform(
-               post("/app/pay")
-	);
-	...
+    ...
+    var resultActions = mockMvc.perform(
+            post("/app/pay")
+    );
+    ...
 }
 ```
 
