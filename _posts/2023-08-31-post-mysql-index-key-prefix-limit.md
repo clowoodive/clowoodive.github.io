@@ -80,6 +80,10 @@ ERROR 1071 (42000) at line 838: Specified key was too long; max key length is 76
     ```
     
 
+<br>
+
+<br>
+
 # 5. 정리
 
 관리 편의 및 `innodb_large_prefix` 의 기본값이 ON 이기에 ON 으로 값을 변경하는 것으로 결정했으며, 해당 컬럼의 문자 개수를 필요 이상으로 크게(255) 세팅 한 것 또한 일괄적인 세팅으로 개발/관리를 편하게 하기 위한 것이지만 앞으로는 지양 해야 할 것으로 생각됨.
