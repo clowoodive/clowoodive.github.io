@@ -23,9 +23,13 @@ last_modified_at: 2023-12-05T00:00:00
 
 # 문제 발생
 
-구조가 잘 짜여 있으면 private 메서드를 테스트할 상황은 많지 않을 수 있겠지만, 테스트 코드를 작성하다 보면 한 번쯤은 맞닥뜨리게 되는 것 같다.
+구조가 잘 짜여 있으면 private 메서드를 테스트할 상황은 많지 않을 수 있겠지만, 테스트 코드를 작성하다 보면 한 번쯤은 맞닥뜨리게 되는 것 같다. 
 
-인스턴스 변수 포함
+어쩔 수 없이 테스트 해야 할 경우 방법을 알아본다.
+
+<br>
+
+<br>
 
 # 1. `public`으로 접근 제한자 변경
 
@@ -33,6 +37,10 @@ last_modified_at: 2023-12-05T00:00:00
 되도록이면 권장하지 않는 방법이다. 
 
 추후에 굳이 테스트를 할 필요가 없는 메서드라면 초기에 단발성으로 테스트 하고 다시 `private`으로 돌려놓는 식으로 써볼만 하다.
+
+<br>
+
+<br>
 
 # 2. *`@VisibleForTesting` 애너테이션 사용*
 
@@ -57,6 +65,10 @@ void method() {
 	...
 }*
 ```
+
+<br>
+
+<br>
 
 # 3. Java Reflection 사용
 
@@ -97,6 +109,10 @@ void testPrivateFieldAndMethod() throws NoSuchFieldException, IllegalAccessExcep
 }
 ```
 
+<br>
+
+<br>
+
 # 4. ReflectionTestUtils 사용
 
 마지막으로 Spring Framework에서 제공하는 `ReflectionTestUtils`를 사용하는 방법이다.
@@ -119,6 +135,14 @@ void testPrivateFieldAndMethod() {
     BDDAssertions.then(retVal).isEqualTo(paramVal * fieldVal);
 }
 ```
+
+아무래도 Spring Test에서 제공하는 유틸이다 보니 직관적이고 간결하게 작성 할 수 있다.
+
+따로 의존성을 추가해야 하는 것도 아니니 `ReflectionTestUtils`를 우선적으로 사용하면 좋을것 같다.
+
+<br>
+
+<br>
 
 ### References
 
