@@ -38,11 +38,8 @@ last_modified_at: 2025-04-22T00:00:00
 아래와 같이 따라 들어가면서 디버깅을 해보면, 쿠키 파싱을 하면서 마지막 BaseicExpiresHandler에서 경고가 발생하는데
 
 processCookies() - ResponseProcessCookies.java
-
     ㄴ parse() - DefaultCookieSpec.java
-
         ㄴ parse() - CookieSpecBase.java
-
             ㄴ parse() - BasicExpiresHandler
 
 아래와 같이 실제 쿠키의 expires 값과 datePatterns의 년/월/일 형식이 맞지 않아서 발생하고 있었다.
