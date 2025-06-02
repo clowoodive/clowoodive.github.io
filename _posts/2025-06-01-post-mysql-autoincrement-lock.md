@@ -82,3 +82,7 @@ SHOW VARIABLES LIKE 'innodb_autoinc_lock_mode';
 [mysqld]
 innodb_autoinc_lock_mode = 1
 ```
+
+### References
+
+- [https://dev.mysql.com/doc/refman/8.4/en/innodb-auto-increment-handling.html](https://dev.mysql.com/doc/refman/8.4/en/innodb-auto-increment-handling.html)
